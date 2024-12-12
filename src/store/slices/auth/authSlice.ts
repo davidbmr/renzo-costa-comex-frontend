@@ -19,7 +19,7 @@ const initialState: AuthState = {
     login: null,
     token: null,
     loginDate: null,
-    role: "admin",
+    role: "",
     module: "", // Agregado
     usuario: null,
 };
@@ -52,7 +52,7 @@ export const authSlice = createSlice({
             state.login = null;
             state.token = null;
             state.loginDate = null;
-            state.role = "admin";
+            state.role = "";
             state.module = ""; // Reset module on logout
             state.usuario = null;
             localStorage.clear();
