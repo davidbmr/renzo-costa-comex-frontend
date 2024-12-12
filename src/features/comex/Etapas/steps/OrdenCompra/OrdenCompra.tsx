@@ -56,7 +56,7 @@ export const OrdenCompra = () => {
   return (
     <>
       <h2 style={{ color: "#333", textTransform: "uppercase" }}>
-        Comercio exterior
+        Orden de Compra
       </h2>
       <div className={styles.btnContainer}>
         <CustomButton text="Crear" backgroundButton="#9B1139" colorP="white" />
