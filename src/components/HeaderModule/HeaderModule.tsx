@@ -10,9 +10,11 @@ export const HeaderModule = () => {
 	const dispatch = useAppDispatch();
 
 	const logout = () => {
-		navigate("/login");
 		localStorage.clear();
 		dispatch(logoutUser());
+		setTimeout(() => {
+			navigate("/login");
+		}, 1000);
 	};
 
 	return (
