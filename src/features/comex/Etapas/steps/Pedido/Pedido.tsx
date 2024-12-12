@@ -47,7 +47,7 @@ export const Pedido = () => {
 
 	return (
 		<>
-		<h2 style={{ color: "#333", textTransform: "uppercase" }}>Comercio exterior</h2>
+		<h2 style={{ color: "#333", textTransform: "uppercase" }}>Pedido</h2>
 			<div className={styles.btnContainer}>
 				<CustomButton
 					text="Crear"
