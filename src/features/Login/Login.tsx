@@ -8,6 +8,8 @@ import { setLogin, setRole, setToken, setUsuario } from "@/store/slices/auth";
 import { SelectField } from "@/components/SelectField/SelectField";
 import { appRoutesComex, appRoutesGestionFinanciera, appRoutesTesoreria } from "@/data/Rutas";
 
+import logo from "@/assets/LogoDefault.png";
+
 export const Login: React.FC = () => {
 	const [user, setUser] = useState({ correo: "", contraseña: "" });
 	const [role, setRoleSelection] = useState("admin");
@@ -55,7 +57,7 @@ export const Login: React.FC = () => {
 				<div className={`${style.form__container}`}>
 					<div style={{ width: "auto", margin: "0 auto" }}>
 						<img
-							src="/public/LogoDefault.png"
+							src={logo}
 							alt="Logo"
 							style={{ width: "100%", height: "80px", objectFit: "cover" }}
 						/>
