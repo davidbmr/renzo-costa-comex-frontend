@@ -1,0 +1,12 @@
+.cierreImportacion__button {
+	border: none;
+	background-color: var(--primary-color-app);
+	color: #fff;
+	padding: 50px;
+	border-radius: 10px;
+	font-size: 22px;
+	font-weight: 600;
+	text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+}

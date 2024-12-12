@@ -1,0 +1,29 @@
+.headerModule__container {
+	width: 100%;
+	height: 80px;
+
+	background-color: var(--primary-color-app);
+	color: #fff;
+	padding: 0 10px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.headerModule__img {
+	height: 100%;
+}
+
+.headerModule__buttonClose {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+
+  text-transform: uppercase;
+  font-weight: 600;
+  
+  color: var(--primary-color-app);
+  cursor: pointer;
+}

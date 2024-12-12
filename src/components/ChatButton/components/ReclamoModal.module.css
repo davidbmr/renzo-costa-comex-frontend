@@ -1,0 +1,24 @@
+.reclamoModal {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reasonOption {
+    display: flex;
+    gap: 10px;
+}
+
+.otherReasonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.otherReasonContainer textarea {
+    width: 400px !important ;
+    height: 100%;
+    resize: none;
+    margin-top: 0.5rem;
+}

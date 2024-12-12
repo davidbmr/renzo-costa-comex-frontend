@@ -1,0 +1,59 @@
+.gridContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+	gap: 25px;
+	padding: 50px;
+}
+
+.featureCard {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 16px;
+	text-align: center;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCard:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+	font-size: 1.2rem;
+	color: #333;
+	margin-bottom: 8px;
+}
+
+.description {
+	font-size: 1rem;
+	color: #555;
+	margin-bottom: 16px;
+}
+
+.actionButton {
+	background-color: var(--primary-color-app);
+	color: white;
+	border: none;
+	padding: 10px 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+	background-color: var(--primary-color-app);
+}
+
+.banner__modules {
+	height: 20vh;
+	background-color: var(--primary-color-app);
+	display: flex;
+	align-items: center;
+}
+
+.banner_modules__img {
+	width: 300px;
+	margin-left: 20px;
+}

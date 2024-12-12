@@ -1,0 +1,27 @@
+.confirmacionEtapa__container {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.confirmacionEtapa__contain {
+	display: flex;
+	justify-content: space-between;
+}
+
+.confirmacionEtapa__buttons__container {
+	display: flex;
+	gap: 10px;
+}
+
+.confirmacionEtapa__button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+
+	background-color: var(--primary-color-app);
+	color: #fff;
+	font-weight: 600;
+
+	text-transform: uppercase;
+	cursor: pointer;
+}
