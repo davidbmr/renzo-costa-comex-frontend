@@ -67,7 +67,7 @@ export const Comex = () => {
 					text="Crear"
 					backgroundButton="#9B1139"
 					colorP="white"
-					onClick={() => setShowForm(true)}
+					onClick={() => navigate("/comex/etapas-comercio-exterior")}
 				/>
 				<CustomButton text="Importar" />
 				<GenerateExcelButton data={data} mapping={mapping} sheetName="Pedidos" />
@@ -112,8 +112,8 @@ const columns = [
 	{ nombre: "Total", campo: "cantidad" },
 	{ nombre: "Cajas", campo: "cantidad" },
 	{ nombre: "Kilos", campo: "cantidad" },
-	{ nombre: "M3", campo: "cantidad" },
-	{ nombre: "Eta", campo: "eta" },
-	{ nombre: "Doc", campo: "doc" },
-	{ nombre: "Pallets", campo: "pallet" },
+	// { nombre: "M3", campo: "cantidad" },
+	// { nombre: "Eta", campo: "eta" },
+	// { nombre: "Doc", campo: "doc" },
+	// { nombre: "Pallets", campo: "pallet" },
 ];

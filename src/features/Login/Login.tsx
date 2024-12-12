@@ -55,7 +55,7 @@ export const Login: React.FC = () => {
 				<div className={`${style.form__container}`}>
 					<div style={{ width: "auto", margin: "0 auto" }}>
 						<img
-							src="/src/assets/logo.svg"
+							src="/public/LogoDefault.png"
 							alt="Logo"
 							style={{ width: "100%", height: "80px", objectFit: "cover" }}
 						/>

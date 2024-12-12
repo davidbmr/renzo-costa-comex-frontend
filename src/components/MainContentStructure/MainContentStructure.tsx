@@ -12,7 +12,7 @@ export const MainContentStructure = ({ children, titleText }: PropsMainContentSt
 	return (
 		<>
 			<div className={style.mainContent__container}>
-				<TitleSection titleText={titleText} />
+				{/* <TitleSection titleText={titleText} /> */}
 				{children}
 			</div>
 		</>
