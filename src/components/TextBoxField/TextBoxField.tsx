@@ -28,7 +28,7 @@ export const TextBoxField = ({
 }: TextBoxFieldProps) => {
 	const styles: React.CSSProperties = {
 		width: labelWidth,
-		fontSize: "15px",
+		fontSize: "14px",
 	}
 
 	return (

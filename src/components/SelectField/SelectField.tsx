@@ -31,7 +31,7 @@ export const SelectField = ({
 }: SelectFieldProps) => {
     const styles: React.CSSProperties = {
         width: labelWidth,
-        fontSize: "15px",
+        fontSize: "14px",
     };
 
     // Convertimos las opciones para que se ajusten a la estructura esperada por el Dropdown
