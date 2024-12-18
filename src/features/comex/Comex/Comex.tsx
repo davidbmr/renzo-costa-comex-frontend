@@ -77,7 +77,6 @@ export const Comex = () => {
 					<GenerateExcelButton data={data} mapping={mapping} sheetName="Pedidos" />
 				</div>
 
-				{/* Tabla de pedidos */}
 
 				<DataTable
 					columns={columns || []}
