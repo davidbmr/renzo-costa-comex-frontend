@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useModal } from "@/hooks/useModal";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModal } from "../AddModal/AddModal";
+import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
+import { InputText } from "primereact/inputtext";
 
 export const Comex = () => {
 	const navigate = useNavigate();
@@ -67,16 +69,25 @@ export const Comex = () => {
 			<MainContentStructure>
 				<h2 style={{ color: "#333", textTransform: "uppercase" }}>Comercio exterior</h2>
 				<div className={styles.btnContainer}>
-					<CustomButton
-						text="Crear"
-						backgroundButton="#9B1139"
-						colorP="white"
-						onClick={addModal.onVisibleModal}
-					/>
-					<CustomButton text="Importar" />
-					<GenerateExcelButton data={data} mapping={mapping} sheetName="Pedidos" />
-				</div>
+					<div className={styles.btnContent}>
+						<CustomButton
+							text="Crear"
+							backgroundButton="#9B1139"
+							colorP="white"
+							onClick={addModal.onVisibleModal}
+						/>
+						<CustomButton text="Importar" />
+						<GenerateExcelButton data={data} mapping={mapping} sheetName="Pedidos" />
+					</div>
 
+					<div className="flex justify-content-end">
+						<span className="p-input-icon-left">
+							<i className="pi pi-search" />
+							<InputText type="search" placeholder="Buscar..." />
+						</span>
+					</div>
+					
+				</div>
 
 				<DataTable
 					columns={columns || []}

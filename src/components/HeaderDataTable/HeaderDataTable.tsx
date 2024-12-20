@@ -26,7 +26,7 @@ export const HeaderDataTable = ({
 					{textAddButton ? (
 						<Button
 							label={textAddButton}
-							icon="pi pi-plus"
+							// icon="pi pi-plus"
 							className="p-button-sm p-button-info mr-2"
 							onClick={onAddModal}
 						/>
