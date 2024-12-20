@@ -4,10 +4,13 @@ import { ConfirmacionEtapa } from "../../ConfirmacionEtapa/ConfirmacionEtapa";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
 import styles from "./DerechosAduaneros.module.css";
+import { useModal } from "@/hooks/useModal";
+import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
+import { AddModal } from "./AddModal/AddModal";
 
 export const DerechosAduaneros = () => {
 	const [data, setData] = useState([]);
-	const [showForm, setShowForm] = useState(false);
+		const addModal = useModal();
 
 	const generateRandomData = (numItems = 50) => {
 		const proveedores = ["Proveedor A", "Proveedor B", "Proveedor C", "Proveedor D"];
@@ -43,13 +46,23 @@ export const DerechosAduaneros = () => {
 					text="Crear"
 					backgroundButton="#9B1139"
 					colorP="white"
-					onClick={() => setShowForm(true)}
+					onClick={addModal.onVisibleModal}
 				/>
 				<CustomButton text="Importar" />
 				{/* <GenerateExcelButton data={data} mapping={mapping} sheetName="Pedidos" /> */}
 			</div>
 			<DataTable columns={columns || []} data={data || []} isHeaderActive={false} />
 			<ConfirmacionEtapa />
+
+			{/* Add Modal */}
+						<PrimeModal
+							header="Agregar Derechos Aduaneros"
+							modalStatus={addModal.modalStatus}
+							onHideModal={addModal.onHideModal}
+							width={600}
+						>
+							<AddModal postFetchData={true} />
+						</PrimeModal>
 		</>
 	);
 };
