@@ -4,9 +4,13 @@ import { ConfirmacionEtapa } from "../../ConfirmacionEtapa/ConfirmacionEtapa";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
 import styles from "./Importaciones.module.css";
+import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
+import { useModal } from "@/hooks/useModal";
+import { AddModal } from "./AddModal/AddModal";
 
 export const Importaciones = () => {
   const [data, setData] = useState([]);
+	const addModal = useModal();
 
   const mapping = {
 	proveedor:"Proveedor", 
@@ -70,6 +74,7 @@ const generateRandomData = (numItems = 50) => {
           text="Crear"
           backgroundButton="#9B1139"
           colorP="white"
+					onClick={addModal.onVisibleModal}
         />
         <CustomButton text="Importar" />
         <GenerateExcelButton
@@ -84,6 +89,16 @@ const generateRandomData = (numItems = 50) => {
         isHeaderActive={false}
       />
       <ConfirmacionEtapa />
+
+			{/* Add Modal */}
+						<PrimeModal
+							header="Agregar Importaciones"
+							modalStatus={addModal.modalStatus}
+							onHideModal={addModal.onHideModal}
+							width={600}
+						>
+							<AddModal postFetchData={true} />
+						</PrimeModal>
     </>
   );
 };
