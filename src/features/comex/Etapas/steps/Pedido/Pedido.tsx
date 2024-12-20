@@ -4,9 +4,13 @@ import { ConfirmacionEtapa } from "../../ConfirmacionEtapa/ConfirmacionEtapa";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
 import styles from "./Pedido.module.css";
+import { useModal } from "@/hooks/useModal";
+import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
+import { AddModal } from "./AddModal/AddModal";
 
 export const Pedido = () => {
 	const [data, setData] = useState([]);
+	const addModal = useModal();
 	const [showForm, setShowForm] = useState(false);
 
 	const generateRandomData = (numItems = 50) => {
@@ -16,7 +20,6 @@ export const Pedido = () => {
 		const observaciones = ["Reposición", "Nuevo", "Nuevo/Reposición"];
 		const familias = ["Correa", "Cartera"];
 		const usos = ["Dama", "Caballero"];
-		const pallets = [""];
 
 		return Array.from({ length: numItems }, (_, index) => {
 			const cantidad = Math.floor(Math.random() * 100) + 1;
@@ -53,7 +56,7 @@ export const Pedido = () => {
 					text="Crear"
 					backgroundButton="#9B1139"
 					colorP="white"
-					onClick={() => setShowForm(true)}
+					onClick={addModal.onVisibleModal}
 				/>
 				<CustomButton text="Importar" />
 				{/* <GenerateExcelButton data={data} mapping={mapping} sheetName="Pedidos" /> */}
@@ -61,6 +64,16 @@ export const Pedido = () => {
 
 			<DataTable columns={columns || []} data={data || []} isHeaderActive={false} />
 			<ConfirmacionEtapa />
+
+			{/* Add Modal */}
+						<PrimeModal
+							header="Agregar Pedido"
+							modalStatus={addModal.modalStatus}
+							onHideModal={addModal.onHideModal}
+							width={600}
+						>
+							<AddModal postFetchData={true} />
+						</PrimeModal>
 		</>
 	);
 };
