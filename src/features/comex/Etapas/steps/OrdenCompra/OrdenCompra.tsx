@@ -9,6 +9,7 @@ import styles from "./OrdenCompra.module.css";
 import { useModal } from "@/hooks/useModal";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModal } from "./AddModal/AddModal";
+import { InputText } from "primereact/inputtext";
 
 export const OrdenCompra = () => {
 	const [data, setData] = useState([]);
@@ -61,15 +62,29 @@ export const OrdenCompra = () => {
 		<>
 			<h2 style={{ color: "#333", textTransform: "uppercase" }}>Orden de Compra</h2>
 			<div className={styles.btnContainer}>
-				<CustomButton text="Crear" backgroundButton="#9B1139" colorP="white" onClick={addModal.onVisibleModal}/>
-				<CustomButton text="Importar" />
-				<GenerateExcelButton data={data} mapping={mapping} sheetName="OrdenCompra" />
+				<div className={styles.btnContent}>
+					<CustomButton
+						text="Crear"
+						backgroundButton="#9B1139"
+						colorP="white"
+						onClick={addModal.onVisibleModal}
+					/>
+					<CustomButton text="Importar" />
+					<GenerateExcelButton data={data} mapping={mapping} sheetName="OrdenCompra" />
+				</div>
+
+				<div className="flex justify-content-end">
+					<span className="p-input-icon-left">
+						<i className="pi pi-search" />
+						<InputText type="search" placeholder="Buscar..." />
+					</span>
+				</div>
 			</div>
 
 			<DataTable columns={columns || []} data={data || []} isHeaderActive={false} />
 			<ConfirmacionEtapa />
 
-      	{/* Add Modal */}
+			{/* Add Modal */}
 			<PrimeModal
 				header="Agregar Orden de Compra"
 				modalStatus={addModal.modalStatus}

@@ -1,5 +1,11 @@
 .btnContainer{
-    padding:1rem 0 2rem 0;
-    display: flex;
-    gap: 1rem;
-  }
+  padding:1rem 1rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btnContent{
+  display: flex;
+  gap: 20px;
+}
