@@ -35,7 +35,7 @@ export const Modules = () => {
 			title: "Configuración",
 			description: "Módulo de configuración",
 			action: "Ingresar al módulo",
-			url: "#",
+			url: "/configuracion",
 		},
 	];
 

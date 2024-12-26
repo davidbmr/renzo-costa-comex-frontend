@@ -1,22 +1,35 @@
 export const appRoutesComex = [
-	{
-	  group: true,
-	  groupName: "PedidosComex",
-	  defaultOpen: true,
-	  routes: [
-		{
-		  path: "/pedidos",
-		  sidebarProps: {
-			displayText: "Información de Pedidos",
-		  },
-		},
-	  ],
-	},
+	// {
+	//   group: true,
+	//   groupName: "PedidosComex",
+	//   defaultOpen: true,
+	//   routes: [
+	// 	{
+	// 	  path: "/pedidos",
+	// 	  sidebarProps: {
+	// 		displayText: "Información de Pedidos",
+	// 	  },
+	// 	},
+	//   ],
+	// },
 	{
 	  group: true,
 	  groupName: "Configuración",
 	  defaultOpen: false,
-	  routes: [],
+	  routes: [
+			{
+				path: "/resumen",
+				sidebarProps: {
+					displayText: "Usuarios",
+				},
+				},
+				{
+				path: "/abonos",
+				sidebarProps: {
+					displayText: "Roles",
+				},
+				},
+		],
 	},
 	{
 		group: true,
@@ -96,3 +109,24 @@ export const appRoutesComex = [
 	},
   ];
   
+	export const appRoutesConf = [
+		{
+			group: true,
+			groupName: "PedidosTeso",
+			defaultOpen: true,
+			routes: [],
+		},
+		{
+			group: true,
+			groupName: "Configuración",
+			defaultOpen: false,
+			routes: [
+			{
+				path: "/permisos",
+				sidebarProps: {
+				displayText: "Gestión de Permisos",
+				},
+			},
+			],
+		},
+		];
