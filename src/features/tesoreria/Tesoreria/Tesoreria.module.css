@@ -1,0 +1,60 @@
+.btnContainer{
+  padding:1rem 1rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btnContent{
+  display: flex;
+  gap: 20px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+  color: #9b1139;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: color 0.2s ease;
+  font-weight: bold;
+
+}
+
+.backButton:hover {
+  color: #d81b60;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  text-align: center;
+  color: white;
+}
+
+.tagSuccess {
+  background-color: #28a745; /* Verde */
+}
+
+.tagWarning {
+  background-color: #ffc107; /* Amarillo */
+}
+
+.tagInfo {
+  background-color: #007bff; /* Azul */
+}
+
+.tagDanger {
+  background-color: #dc3545; /* Rojo */
+}

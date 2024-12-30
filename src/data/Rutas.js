@@ -23,10 +23,17 @@ export const appRoutesComex = [
 					displayText: "Usuarios",
 				},
 				},
-				{
-				path: "/abonos",
+		],
+	},
+	{
+	  group: true,
+	  groupName: "Comex",
+	  defaultOpen: false,
+	  routes: [
+			{
+				path: "/resumen",
 				sidebarProps: {
-					displayText: "Roles",
+					displayText: "Provedores",
 				},
 				},
 		],

@@ -8,6 +8,7 @@ import { initializeAuth } from "@/store/slices/auth";
 import { Modules } from "@/features/Modules/Modules";
 import { AppRoutesComex } from "./AppRoutesComex";
 import { AppRoutesConfiguracion } from "./AppRoutesConfiguracion";
+import { AppRoutesTesoreria } from "./AppRoutesTesoreria";
 
 export function AppRoutes() {
 	const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ export function AppRoutes() {
 						<Route path="/modules" element={<Modules />} />
 
 						<Route path="/comex/*" element={<AppRoutesComex />} />
+						<Route path="/tesoreria/*" element={<AppRoutesTesoreria />} />
 						<Route path="/configuracion/*" element={<AppRoutesConfiguracion selectedModule={selectedModule} />} />
 						<Route path="/admin/*" element={<AppRoutesAdmin selectedModule={selectedModule} />} />
 						<Route path="/*" element={<Navigate to="/modules" />} />

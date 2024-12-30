@@ -28,14 +28,14 @@ export const Modules = () => {
 			title: "Tesorería",
 			description: "Módulo de tesorería",
 			action: "Ingresar al módulo",
-			url: "#",
+			url: "/tesoreria",
 		},
 		{
 			id: 3,
 			title: "Configuración",
 			description: "Módulo de configuración",
 			action: "Ingresar al módulo",
-			url: "/configuracion",
+			url: "#",
 		},
 	];
 
