@@ -27,16 +27,9 @@ export const Flujo = ({ postFetchData = true, updateFetchData, updateData }: Pro
 	const navigate = useNavigate();
 
 	const [newData, setNewData] = useState<any>({
-		proveedor: "",
-		orden: "",
-		ingreso: "",
-		estado: "",
-		descripcion: "",
-		observacion: "",
-		uso: "",
-		total: "",
-		cajas: "",
-		kilos: "",
+		banco: "",
+		saldoInicialSoles: "",
+		saldoInicialDolares: "",
 	});
 
 	const handleCreate = async () => {
@@ -73,8 +66,8 @@ export const Flujo = ({ postFetchData = true, updateFetchData, updateData }: Pro
 				</h2>
 				<SelectField
 					textLabel="Banco:"
-					name="proveedor"
-					value={newData.proveedor}
+					name="banco"
+					value={newData.banco}
 					onChange={(e) => handleChangeInput(e, setNewData)}
 					options={optionBanco}
 					direction="row"
@@ -83,16 +76,16 @@ export const Flujo = ({ postFetchData = true, updateFetchData, updateData }: Pro
 				<div className={style.two__container}>
 					<TextBoxField
 						textLabel="Saldo Inicial Soles:"
-						value={newData.orden || ""}
-						name="orden"
+						value={newData.saldoInicialSoles || ""}
+						name="saldoInicialSoles"
 						onChange={(e) => handleChangeInput(e, setNewData)}
 						direction="row"
 						labelWidth="140px"
 					/>
 					<TextBoxField
 						textLabel="Saldo Inicial Dólares:"
-						value={newData.orden || ""}
-						name="orden"
+						value={newData.saldoInicialDolares || ""}
+						name="saldoInicialDolares"
 						onChange={(e) => handleChangeInput(e, setNewData)}
 						direction="row"
 						labelWidth="140px"
