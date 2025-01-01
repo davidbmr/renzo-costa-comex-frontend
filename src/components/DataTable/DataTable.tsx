@@ -21,6 +21,7 @@ interface DataTableProps {
 		onClick?: (rowData: any) => void;
 	}; // Nuevo prop para customButtonProps
 	children?: React.ReactNode;
+	isPaginator?: boolean;
 }
 
 export const DataTable = ({
@@ -37,6 +38,7 @@ export const DataTable = ({
 	isEyeDisabled,
 	customButtonProps, // Acepta el nuevo prop
 	children,
+	isPaginator,
 }: DataTableProps) => {
 	return (
 		<SectionStructure>
@@ -58,6 +60,7 @@ export const DataTable = ({
 				onEye={onEye}
 				isEyeDisabled={isEyeDisabled}
 				customButtonProps={customButtonProps} // Pasa el prop a PrimeDataTable
+				isPaginator={isPaginator}
 			/>
 
 			{children ? <div>{children}</div> : null}

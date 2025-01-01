@@ -11,6 +11,7 @@ export const PrimeDataTable = ({
 	onEye,
 	isEyeDisabled,
 	customButtonProps,
+	isPaginator = true
 }) => {
 	const [dataTable, setDataTable] = useState(data);
 	const [rowsPerPageOptions, setRowsPerPageOptions] = useState([5, 10, 25]);
@@ -74,7 +75,7 @@ export const PrimeDataTable = ({
 	return (
 		<PrimeReactDataTable
 			value={dataTable}
-			paginator
+			paginator={isPaginator}
 			rows={5}
 			rowsPerPageOptions={rowsPerPageOptions}
 			dataKey="id"

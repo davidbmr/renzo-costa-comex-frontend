@@ -65,7 +65,7 @@ export const Tesoreria = () => {
 							text="Crear"
 							backgroundButton="#9B1139"
 							colorP="white"
-							onClick={() => navigate("/tesoreria/flujo-creacion")}
+							onClick={() =>{}}
 						/>
 						<CustomButton text="Importar" />
 						<GenerateExcelButton data={data} mapping={mapping} sheetName="Tesoreria" />
@@ -84,7 +84,7 @@ export const Tesoreria = () => {
 					columns={columns || []}
 					data={data || []}
 					isHeaderActive={false}
-					onEye={() => {}}
+					onEye={() => navigate("/tesoreria/etapas-tesoreria")}
           onUpdate={()=>{}}
 				/>
 			</MainContentStructure>
@@ -108,4 +108,6 @@ const columns = [
 	{ nombre: "Gastos Dólares", campo: "gastosDolares" },
 	{ nombre: "Saldo Final Soles", campo: "saldoFinalSoles" },
 	{ nombre: "Saldo Final Dólares", campo: "saldoFinalDolares" },
+	{ nombre: "Fecha", campo: "fecha" },
+	{ nombre: "Estado", campo: "estado" },
 ]

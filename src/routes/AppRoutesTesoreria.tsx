@@ -6,7 +6,8 @@ import { AppStructure } from "../components/AppStructure/AppStructure";
 import { HeaderModule } from "@/components/HeaderModule/HeaderModule";
 
 import { Tesoreria } from "@/features/tesoreria/Tesoreria/Tesoreria";
-import { Flujo } from "@/features/tesoreria/flujo/Flujo/Flujo";
+import { Flujo } from "@/features/tesoreria/Etapas/steps/SaldosIniciales/Flujo/Flujo";
+import { Etapas } from "@/features/tesoreria/Etapas/Etapas";
 
 export const AppRoutesTesoreria = () => {
 	return (
@@ -16,7 +17,8 @@ export const AppRoutesTesoreria = () => {
 			<div className={style.routesContainer}>
 				<Routes>
 					<Route path="/" element={<Tesoreria />} />
-					<Route path="/flujo-creacion" element={<Flujo />} />
+					<Route path="/etapas-tesoreria" element={<Etapas />} />
+					<Route path="/etapas-tesoreria/saldos-iniciales/creacion" element={<Flujo/>}/>
 				</Routes>
 			</div>
 		</AppStructure>

@@ -3,6 +3,7 @@ import { authSlice } from "./slices/auth";
 import { toastSlice } from "./slices/toast";
 import notificationsReducer from "./slices/notifications/notificationsSlice";
 import { comexSlice } from "./slices/comex";
+import { tesoreriaSlice } from "./slices/tesoreria";
 
 export const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
 		toast: toastSlice.reducer,
 		notification: notificationsReducer,
 		comex: comexSlice.reducer,
+		tesoreria: tesoreriaSlice.reducer,
 	},
 });
 

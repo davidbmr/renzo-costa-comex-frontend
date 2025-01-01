@@ -8,9 +8,7 @@ import { handleChangeInput } from "@/helpers/handleTextBox";
 import { Button } from "primereact/button";
 import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
 import { SelectField } from "@/components/SelectField/SelectField";
-import { DateField } from "@/components/DateField/DateField";
 import { DataTable } from "@/components/DataTable/DataTable";
-import { CustomButton } from "@/components/CustomButton/CustomButton";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { MainContentStructure } from "@/components/MainContentStructure/MainContentStructure";
 import { IngresoEgresoModal } from "./IngresoEgresoModal/IngresoEgresoModal";
@@ -33,7 +31,7 @@ export const Flujo = ({ postFetchData = true, updateFetchData, updateData }: Pro
 	});
 
 	const handleCreate = async () => {
-		navigate("/tesoreria");
+		navigate("/tesoreria/etapas-tesoreria");
 	};
 
 	const handleUpdate = async () => {
