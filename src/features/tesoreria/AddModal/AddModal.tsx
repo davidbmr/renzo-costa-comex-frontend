@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import style from "./AddModal.module.css";
-
+import { Button } from "primereact/button";
+import { DateField } from "@/components/DateField/DateField";
 import { handleChangeInput } from "@/helpers/handleTextBox";
 
-import { Button } from "primereact/button";
-import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
-import { SelectField } from "@/components/SelectField/SelectField";
-import { DateField } from "@/components/DateField/DateField";
-import { CustomButton } from "@/components/CustomButton/CustomButton";
-import { DataTable } from "@/components/DataTable/DataTable";
 
 interface PropsAddModal {
 	postFetchData?: any;
@@ -18,16 +13,7 @@ interface PropsAddModal {
 
 export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAddModal) => {
 	const [newData, setNewData] = useState<any>({
-		proveedor: "",
-		orden: "",
-		ingreso: "",
-		estado: "",
-		descripcion: "",
-		observacion: "",
-		uso: "",
-		total: "",
-		cajas: "",
-		kilos: "",
+		fecha: "",
 	});
 
 	const handleCreate = async () => {
@@ -60,10 +46,6 @@ export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAd
 		updateFetchData(id, formData);
 	};
 
-	const handleBannerChange = (e: any) => {
-		setNewData({ ...newData, banner: e.files[0] });
-	};
-
 	// Seteando el estado del input al data si existe el update
 	useEffect(() => {
 		if (updateData) {
@@ -73,7 +55,7 @@ export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAd
 
 	return (
 		<div className={style.column__container}>
-			<DateField textLabel="Fecha de Apertura:"/>
+			<DateField textLabel="Fecha de Apertura:" name={"fecha"} value={newData.fecha} onChange={(e) => handleChangeInput(e, setNewData)}/>
 			
 			{postFetchData && (
 				<div>
