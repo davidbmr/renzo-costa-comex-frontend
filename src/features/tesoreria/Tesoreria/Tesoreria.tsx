@@ -68,7 +68,7 @@ export const Tesoreria = () => {
 							text="Crear"
 							backgroundButton="#9B1139"
 							colorP="white"
-							onClick={() =>{}}
+							onClick={addModal.onVisibleModal}
 						/>
 						<CustomButton text="Importar" />
 						<GenerateExcelButton data={data} mapping={mapping} sheetName="Tesoreria" />
@@ -93,10 +93,10 @@ export const Tesoreria = () => {
 			</MainContentStructure>
 			{/* Add Modal */}
 			<PrimeModal
-				header="Agregar Flujo Diario"
+				header="Apertura de Saldos Bancarios Diarios"
 				modalStatus={addModal.modalStatus}
 				onHideModal={addModal.onHideModal}
-				width={800}
+				width={500}
 			>
 				<AddModal postFetchData={true} />
 			</PrimeModal>
