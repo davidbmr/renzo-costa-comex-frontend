@@ -17,16 +17,11 @@ interface PropsAddModal {
 
 export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAddModal) => {
 	const [newData, setNewData] = useState<any>({
-		modelo: "",
-		itemCodigo: "",
-		descripcion: "",
-		pedidoDIC: "",
-		precioPEN: "",
-		estado: "",
-		foto: "",
-		conFoto: "",
-		conPrecio: "",
-		CostoUSD: "",
+		tipoCambio: "",
+		dolar: "",
+		soles: "",
+		entidad: "",
+		fecha: "",
 	});
 
 	const handleCreate = async () => {
@@ -72,103 +67,51 @@ export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAd
 
 	return (
 		<div className={style.column__container}>
-			<SelectField
-				textLabel="Modelo:"
-				name="modelo"
-				value={newData.modelo}
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				options={optionSelect}
-				direction="row"
-				labelWidth="80px"
-			/>
-
-			<SelectField
-				textLabel="Item Código:"
-				name="itemCodigo"
-				value={newData.itemCodigo}
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				options={optionItemCod}
-				direction="row"
-				labelWidth="80px"
-			/>
 
 			<TextBoxField
-				textLabel="Descripción:"
-				value={newData.descripcion || ""}
-				name="descripcion"
+				textLabel="Tipo de Cambio:"
+				value={newData.tipoCambio || ""}
+				name="tipoCambio"
 				onChange={(e) => handleChangeInput(e, setNewData)}
 				direction="row"
 				labelWidth="80px"
 			/>
 
 			<TextBoxField
-				textLabel="Pedido DIC:"
-				value={newData.pedidoDIC || ""}
-				name="pedidoDIC"
+				textLabel="Dólar:"
+				value={newData.dolar || ""}
+				name="dolar"
 				onChange={(e) => handleChangeInput(e, setNewData)}
 				direction="row"
 				labelWidth="80px"
 			/>
 
 			<TextBoxField
-				textLabel="Precio (PEN):"
-				value={newData.precioPEN || ""}
-				name="precioPEN"
+				textLabel="Soles:"
+				value={newData.soles || ""}
+				name="soles"
 				onChange={(e) => handleChangeInput(e, setNewData)}
 				direction="row"
 				labelWidth="80px"
 			/>
 
 			<SelectField
-				textLabel="Estado:"
-				name={"estado"}
-				value={newData.estado}
+				textLabel="Entidad:"
+				name={"entidad"}
+				value={newData.entidad}
 				onChange={(e) => handleChangeInput(e, setNewData)}
-				options={optionEstado}
+				options={optionBanco}
 				direction="row"
 				labelWidth="80px"
 			/>
 
-			<div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-				<label>Archivo de imagen</label>
-				<FileUpload
-					mode="basic"
-					name="file_field_name"
-					accept="image/*"
-					maxFileSize={1000000}
-					onSelect={handleBannerChange}
-					chooseLabel="Cargar imagen"
-				/>
-			</div>
-
-			<div className={style.two__container}>
-				<TextBoxField
-					textLabel="Con foto:"
-					value={newData.conFoto || ""}
-					name="conFoto"
-					onChange={(e) => handleChangeInput(e, setNewData)}
-					direction="row"
-					labelWidth="80px"
-				/>
-				<TextBoxField
-					textLabel="Con precio:"
-					value={newData.conPrecio || ""}
-					name="conPrecio"
-					onChange={(e) => handleChangeInput(e, setNewData)}
-					direction="row"
-					labelWidth="80px"
-				/>
-			</div>
-
-			<TextBoxField
-					textLabel="Costo (USD):"
-					value={newData.CostoUSD || ""}
-					name="CostoUSD"
-					onChange={(e) => handleChangeInput(e, setNewData)}
-					direction="row"
-					labelWidth="80px"
-				/>
-
+			<DateField
+			textLabel="Fecha:"
+			labelWidth="80px"
+			direction="row"
+			value={newData.fecha}
+			onChange={(e) => handleChangeInput(e, setNewData)}
+			/>
 			{postFetchData && (
 				<div>
 					<Button className="p-button-sm p-button-info mr-2" onClick={handleCreate}>
@@ -188,21 +131,13 @@ export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAd
 	);
 };
 
-const optionSelect = [
-	{ name: "Modelo 1", value: "modelo1" },
-	{ name: "Modelo 2", value: "modelo2" },
-	{ name: "Modelo 3", value: "modelo3" },
-	{ name: "Modelo 4", value: "modelo4" },
-	{ name: "Modelo 5", value: "modelo5" },
+const optionBanco = [
+	{ name: "BCP", value: "proveedor1" },
+	{ name: "BBVA", value: "proveedor2" },
+	{ name: "SCOTIABANK", value: "proveedor3" },
+	{ name: "INTERBANK", value: "proveedor4" },
 ];
 
 const optionEstado = [
 	{ name: "Nuevo", value: "nuevo" },
-];
-
-const optionItemCod = [
-	{ name: "TIC3540045", value: "tic45" },
-	{ name: "TIC3540080", value: "tic80" },
-	{ name: "TIC3540078", value: "tic78" },
-	{ name: "TIC3540032", value: "tic32" },
 ];

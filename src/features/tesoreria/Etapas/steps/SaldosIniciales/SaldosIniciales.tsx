@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { DataTable } from "@/components/DataTable/DataTable";
 import { ConfirmacionEtapa } from "../../ConfirmacionEtapa/ConfirmacionEtapa";
-import { useSelector } from "react-redux";
-import { useAppSelector } from "@/store/hooks";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import styles from "./SaldosIniciales.module.css";
@@ -16,22 +14,56 @@ export const SaldosIniciales = () => {
 	const navigate = useNavigate();
 	const [data, setData] = useState([
 		{
-			saldoInicialSoles: "1",
-			saldoInicialDolares: "2",
-			gastosSoles: "3",
-			gastosDolares: "4",
-			saldoFinalSoles: "5",
-			saldoFinalDolares: "6",
+			fecha: "",
+			banco: "BCP",
+			saldoInicialSoles: "1000",
+			saldoInicialDolares: "2000",
+			gastosSoles: "300",
+			gastosDolares: "1000",
+			saldoFinalSoles: "700",
+			saldoFinalDolares: "1000",
+		},
+		{
+			fecha: "",
+			banco: "BBVA",
+			saldoInicialSoles: "1000",
+			saldoInicialDolares: "2000",
+			gastosSoles: "300",
+			gastosDolares: "1000",
+			saldoFinalSoles: "700",
+			saldoFinalDolares: "1000",
+		},
+		{
+			fecha: "",
+			banco: "SCOTIABANK",
+			saldoInicialSoles: "1000",
+			saldoInicialDolares: "2000",
+			gastosSoles: "300",
+			gastosDolares: "1000",
+			saldoFinalSoles: "700",
+			saldoFinalDolares: "1000",
+		},
+		{
+			fecha: "",
+			banco: "INTERBANK",
+			saldoInicialSoles: "1000",
+			saldoInicialDolares: "2000",
+			gastosSoles: "300",
+			gastosDolares: "1000",
+			saldoFinalSoles: "700",
+			saldoFinalDolares: "1000",
 		},
 	]);
 	const addModal = useModal();
 	const mapping = {
-		referencia: "Referencia",
 		fecha: "Fecha",
-		diario: "Diario",
-		saldoInicial: "Saldo Inicial",
-		saldoFinal: "Saldo Final",
-		estado: "Estado",
+		banco: "Banco",
+		saldoInicialSoles: "Saldo Inicial Soles",
+		saldoInicialDolares: "Saldo Inicial Dólares",
+		gastosSoles: "Gastos Soles",
+		gastosDolares: "Gastos Dólares",
+		saldoFinalSoles: "Saldo Final Soles",
+		saldoFinalDolares: "Saldo Final Dólares",
 	};
 
 	return (
@@ -61,14 +93,29 @@ export const SaldosIniciales = () => {
 				columns={columns || []}
 				data={data || []}
 				isHeaderActive={false}
-				onEye={() => ""}
+				onUpdate={() => ""}
+				onDelete={() => ""}
 				isPaginator={false}
 			/>
+			<br />
+			<div className={styles.dateTable__container}>
+				<DataTable
+					onAddModal={addModal.onVisibleModal}
+					textAddButton="Crear"
+					columns={columns1 || []}
+					data={data1 || []}
+					isHeaderActive={true}
+					onUpdate={() => ""}
+					onDelete={() => ""}
+					isPaginator={false}
+				/>
+			</div>
+
 			<ConfirmacionEtapa />
 
 			{/* Add Modal */}
 			<PrimeModal
-				header="Agregar Saldos Iniciales"
+				header="Agregar Tipo de Cambio"
 				modalStatus={addModal.modalStatus}
 				onHideModal={addModal.onHideModal}
 				width={600}
@@ -80,6 +127,8 @@ export const SaldosIniciales = () => {
 };
 
 const columns = [
+	{ nombre: "Fecha", campo: "fecha" },
+	{ nombre: "Banco", campo: "banco" },
 	{ nombre: "Saldo Inicial Soles", campo: "saldoInicialSoles" },
 	{ nombre: "Saldo Inicial Dólares", campo: "saldoInicialDolares" },
 	{ nombre: "Gastos Soles", campo: "gastosSoles" },
@@ -87,3 +136,13 @@ const columns = [
 	{ nombre: "Saldo Final Soles", campo: "saldoFinalSoles" },
 	{ nombre: "Saldo Final Dólares", campo: "saldoFinalDolares" },
 ];
+
+const columns1 = [
+	{ nombre: "TC", campo: "tipoCambio" },
+	{ nombre: "Dólares", campo: "dolares" },
+	{ nombre: "Soles", campo: "soles" },
+	{ nombre: "Entidad", campo: "entidad" },
+	{ nombre: "Fecha", campo: "fecha" },
+];
+
+const data1 = [{ tipoCambio: "3.7958", dolares: "70000", soles: "", entidad: "", fecha: "" }];
