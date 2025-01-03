@@ -7,7 +7,6 @@ import { Button } from "primereact/button";
 import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
 import { SelectField } from "@/components/SelectField/SelectField";
 import { DateField } from "@/components/DateField/DateField";
-import { FileUpload } from "primereact/fileupload";
 
 interface PropsAddModal {
 	postFetchData?: any;

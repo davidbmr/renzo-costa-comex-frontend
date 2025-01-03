@@ -60,7 +60,7 @@ export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAd
 			{postFetchData && (
 				<div>
 					<Button className="p-button-sm p-button-info mr-2" onClick={handleCreate}>
-						GUARDAR
+						APERTURAR
 					</Button>
 				</div>
 			)}
