@@ -1,0 +1,30 @@
+.gridContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+	gap: 25px;
+	padding: 50px;
+}
+
+.featureCard {
+	/* background-color: #fff; */
+  background-color: var(--primary-color-app);
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 16px;
+	text-align: center;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.featureCard:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+	font-size: 1.1rem;
+	/* color: #333; */
+  color: #fff;
+	margin-bottom: 8px;
+}

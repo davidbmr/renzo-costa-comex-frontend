@@ -11,6 +11,7 @@ import { setCurrentStep } from "@/store/slices/tesoreria";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { SaldosIniciales } from "./steps/SaldosIniciales/SaldosIniciales";
 import { RevisionCuentasPagar } from "./steps/RevisionCuentasPagar/RevisionCuentasPagar";
+import { RevisionObligaciones } from "./steps/RevisionObligaciones/RevisionObligaciones";
 
 export const Etapas = () => {
   const { currentStep } = useAppSelector((state) => state.tesoreria);
@@ -48,7 +49,7 @@ export const Etapas = () => {
       <Divider />
       {currentStep == 0 && <SaldosIniciales />}
       {currentStep == 1 && <RevisionCuentasPagar />}
-      {currentStep == 2 && <SaldosIniciales />}
+      {currentStep == 2 && <RevisionObligaciones />}
       {currentStep == 3 && <SaldosIniciales />}
 
     </MainContentStructure>
