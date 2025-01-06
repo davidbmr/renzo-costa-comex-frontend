@@ -68,7 +68,7 @@ export const Tesoreria = () => {
         <div className={styles.btnContainer}>
           <div className={styles.btnContent}>
             <CustomButton
-              text="Crear"
+              text="CREAR"
               backgroundButton="#9B1139"
               colorP="white"
               onClick={addModal.onVisibleModal}

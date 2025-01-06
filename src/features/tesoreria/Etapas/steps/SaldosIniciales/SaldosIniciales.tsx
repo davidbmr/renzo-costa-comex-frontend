@@ -72,12 +72,12 @@ export const SaldosIniciales = () => {
 			<div className={styles.btnContainer}>
 				<div className={styles.btnContent}>
 					<CustomButton
-						text="Crear"
+						text="CREAR"
 						backgroundButton="#9B1139"
 						colorP="white"
 						onClick={() => navigate("/tesoreria/etapas-tesoreria/saldos-iniciales/creacion")}
 					/>
-					<CustomButton text="Importar" />
+					<CustomButton text="IMPORTAR" />
 					<GenerateExcelButton data={data} mapping={mapping} sheetName="SaldosIniciales" />
 				</div>
 
