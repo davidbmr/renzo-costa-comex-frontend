@@ -4,10 +4,8 @@ import { DataTable } from "@/components/DataTable/DataTable";
 import { ConfirmacionEtapa } from "../../ConfirmacionEtapa/ConfirmacionEtapa";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
-import { InputText } from "primereact/inputtext";
 import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
-import { handleChangeInput } from "@/helpers/handleTextBox";
-import { DateField } from "@/components/DateField/DateField";
+import { SelectField } from "@/components/SelectField/SelectField";
 
 export const RevisionCuentasPagar = () => {
   const [data, setData] = useState([]);
@@ -98,28 +96,20 @@ export const RevisionCuentasPagar = () => {
         </div>
 
         <div className={styles.filter__container}>
+          <SelectField
+          textLabel="Buscar por:"
+          name="numeroComprobante"
+          options={optionFiltro}
+          value={""}
+          onChange={() => ""}
+          direction="row"
+          />
           <TextBoxField
-            textLabel="Número de Comprobante:"
             value={""}
             name="numeroComprobante"
             onChange={() => ""}
             direction="row"
           />
-          <TextBoxField
-            textLabel="Nombre:"
-            value={""}
-            name="nombre"
-            onChange={() => ""}
-            direction="row"
-          />
-          <TextBoxField
-            textLabel="Cód. de Proveedor:"
-            value={""}
-            name="codigoCliente"
-            onChange={() => ""}
-            direction="row"
-          />
-          <DateField textLabel="Fecha:" direction="row" />
           <CustomButton
             text="Buscar"
             backgroundButton="#9B1139"
@@ -149,4 +139,11 @@ const columns = [
   { nombre: "Total", campo: "total1" },
   { nombre: "Estado", campo: "estado" },
   { nombre: "Status de Documento", campo: "statusDocumento" },
+];
+
+const optionFiltro = [
+	{ name: "Núm. Comprobante", value: "proveedor1" },
+	{ name: "Nombre", value: "proveedor2" },
+	{ name: "Cód. Proveedor", value: "proveedor3" },
+	{ name: "Fecha", value: "proveedor4" },
 ];
