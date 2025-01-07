@@ -37,7 +37,12 @@ export const RevisionObligaciones = () => {
       {
         id: 6,
         title: "TARJETAS DE CRÉDITOS",
-        url: "#",
+        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/tarjetas-de-credito",
+      },
+      {
+        id: 7,
+        title: "CARTA DE FIANZA",
+        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/carta-fianza",
       },
     ];
 

@@ -1,0 +1,58 @@
+.container {
+   padding: 2rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .totalContainer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .totalBlock {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .totalItem {
+    display: flex;
+   
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    color: #9b1139;
+  }
+  
+  .totalContent {
+    text-align: center;
+  }
+  
+  .label {
+    font-weight: bold;
+    margin: 0;
+    color: #555;
+  }
+  
+  .value {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .cancelledText {
+    font-size: 1rem;
+    font-weight: bold;
+    color: red;
+  }
+  

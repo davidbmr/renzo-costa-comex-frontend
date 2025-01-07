@@ -13,6 +13,8 @@ import { PolizaSeguros } from "@/features/tesoreria/Etapas/steps/RevisionObligac
 import { AccionistasAlquileres } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/AccionistasRegalias/AccionistasRegalias";
 import { CreateAccionistas } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/AccionistasRegalias/Create/CreateAccionistas";
 import { Dividendos } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/Dividendos/Dividendos";
+import { TarjetasDeCredito } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/TarjetasDeCredito/TarjetasDeCredito";
+import { CartaFianza } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/CartaFianza/CartaFianza";
 
 export const AppRoutesTesoreria = () => {
 	return (
@@ -42,6 +44,14 @@ export const AppRoutesTesoreria = () => {
 					<Route
 						path="/etapas-tesoreria/revision-obligaciones/dividendos"
 						element={<Dividendos />}
+					/>
+					<Route
+						path="/etapas-tesoreria/revision-obligaciones/tarjetas-de-credito"
+						element={<TarjetasDeCredito />}
+					/>
+					<Route
+						path="/etapas-tesoreria/revision-obligaciones/carta-fianza"
+						element={<CartaFianza />}
 					/>
 				</Routes>
 			</div>
