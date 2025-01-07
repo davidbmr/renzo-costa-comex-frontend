@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
 import { Steps } from "primereact/steps";
 import { MainContentStructure } from "@/components/MainContentStructure/MainContentStructure";
 import { Divider } from "primereact/divider";
-
-
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { setCurrentStep } from "@/store/slices/tesoreria";
@@ -19,10 +16,17 @@ export const Etapas = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentStep != 0) {
-      dispatch(setCurrentStep(0));
-    }
-  }, []);
+    localStorage.setItem("currentStep", String(currentStep));
+  }, [currentStep]);
+
+  useEffect(() => {
+    const savedStep = localStorage.getItem("currentStep");
+    dispatch(setCurrentStep(savedStep ? Number(savedStep) : 0));
+  }, [dispatch]);
+
+  const handleStepChange = (e: any) => {
+    dispatch(setCurrentStep(e.index));
+  };
 
   return (
     <MainContentStructure>
@@ -45,13 +49,19 @@ export const Etapas = () => {
         <IoMdArrowRoundBack />
         <p>Regresar a Tesoreria</p>
       </div>
-      <Steps model={items} activeIndex={currentStep} />
-      <Divider />
-      {currentStep == 0 && <SaldosIniciales />}
-      {currentStep == 1 && <RevisionCuentasPagar />}
-      {currentStep == 2 && <RevisionObligaciones />}
-      {currentStep == 3 && <SaldosIniciales />}
 
+      <Steps
+        readOnly={false}
+        model={items}
+        activeIndex={currentStep}
+        onSelect={handleStepChange}
+      />
+      <Divider />
+
+      {currentStep === 0 && <SaldosIniciales />}
+      {currentStep === 1 && <RevisionCuentasPagar />}
+      {currentStep === 2 && <RevisionObligaciones />}
+      {currentStep === 3 && <SaldosIniciales />}
     </MainContentStructure>
   );
 };
@@ -68,5 +78,5 @@ const items: any[] = [
   },
   {
     label: "Pagos Iniciales y Masivos",
-  }
+  },
 ];

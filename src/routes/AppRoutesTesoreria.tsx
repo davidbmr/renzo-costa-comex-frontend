@@ -9,6 +9,7 @@ import { Tesoreria } from "@/features/tesoreria/Tesoreria/Tesoreria";
 import { Flujo } from "@/features/tesoreria/Etapas/steps/SaldosIniciales/Flujo/Flujo";
 import { Etapas } from "@/features/tesoreria/Etapas/Etapas";
 import { ComexFinanciamiento } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/ComexFinanciamiento/ComexFinanciamiento";
+import { PolizaSeguros } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/PolizaSeguros/PolizaSeguros";
 
 export const AppRoutesTesoreria = () => {
 	return (
@@ -22,6 +23,7 @@ export const AppRoutesTesoreria = () => {
 					<Route path="/etapas-tesoreria/saldos-iniciales/creacion" element={<Flujo/>}/>
 					{/* <Route path="/etapas-tesoreria/revision-obligaciones" element={<ComexFinanciamiento/>}/> */}
 					<Route path="/etapas-tesoreria/revision-obligaciones/comex-financiamiento" element={<ComexFinanciamiento/>}/>
+					<Route path="/etapas-tesoreria/revision-obligaciones/poliza-seguros" element={<PolizaSeguros/>}/>
 				</Routes>
 			</div>
 		</AppStructure>

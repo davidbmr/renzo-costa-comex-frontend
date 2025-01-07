@@ -39,11 +39,6 @@ export const RevisionObligaciones = () => {
         title: "TARJETAS DE CRÉDITOS",
         url: "#",
       },
-      {
-        id: 7,
-        title: "CARTA FIANZA",
-        url: "#",
-      },
     ];
 
 	return (

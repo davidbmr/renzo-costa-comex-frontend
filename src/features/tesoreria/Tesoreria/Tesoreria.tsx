@@ -4,16 +4,20 @@ import { MainContentStructure } from "@/components/MainContentStructure/MainCont
 import { DataTable } from "@/components/DataTable/DataTable";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useModal } from "@/hooks/useModal";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { InputText } from "primereact/inputtext";
 import { AddModal } from "../AddModal/AddModal";
+import { useAppDispatch } from "@/store/hooks";
+import { setCurrentStep } from "@/store/slices/tesoreria";
 
 export const Tesoreria = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // Hook para detectar la ubicación actual
   const addModal = useModal();
   const [data, setData] = useState([]);
+  const dispatch = useAppDispatch();
 
   const mapping = {
     fecha: "Fecha",
@@ -61,6 +65,17 @@ export const Tesoreria = () => {
     setData(generateRandomData());
   }, []);
 
+  // Limpiar localStorage si estamos en la ruta "/tesoreria"
+  useEffect(() => {
+    if (location.pathname === "/tesoreria") {
+      // Limpiar el localStorage
+      localStorage.removeItem("currentStep");
+
+      // Reiniciar el estado global al paso inicial
+      dispatch(setCurrentStep(0));
+    }
+  }, [location.pathname, dispatch]);
+
   return (
     <>
       <MainContentStructure>
@@ -73,7 +88,6 @@ export const Tesoreria = () => {
               colorP="white"
               onClick={addModal.onVisibleModal}
             />
-            {/* <CustomButton text="Importar" /> */}
             <GenerateExcelButton
               data={data}
               mapping={mapping}
