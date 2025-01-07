@@ -55,7 +55,7 @@ export const AddModal = ({ postFetchData,OnHideModal }: PropsAddModal) => {
 
   return (
     <div className={style.modal__container}>
-      <h2>Crear nuevo ítem</h2>
+   
 
       <div className={style.form__container}>
         <TextBoxField
