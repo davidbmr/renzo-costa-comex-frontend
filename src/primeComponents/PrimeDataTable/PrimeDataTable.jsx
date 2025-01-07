@@ -11,10 +11,14 @@ export const PrimeDataTable = ({
 	onEye,
 	isEyeDisabled,
 	customButtonProps,
-	isPaginator = true
+	isPaginator = true,
 }) => {
 	const [dataTable, setDataTable] = useState(data);
 	const [rowsPerPageOptions, setRowsPerPageOptions] = useState([5, 10, 25]);
+	
+	//Nueva funcionalidad
+	const [selectedProducts, setSelectedProducts] = useState(null);
+
 
 	useEffect(() => {
 		setDataTable(data);
@@ -81,7 +85,10 @@ export const PrimeDataTable = ({
 			dataKey="id"
 			emptyMessage="No se han encontrado resultados."
 			scrollable
+			selection={selectedProducts} 
+			onSelectionChange={(e) => setSelectedProducts(e.value)}
 		>
+			<Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
 			{columns &&
 				columns.map((column) => (
 					<Column
