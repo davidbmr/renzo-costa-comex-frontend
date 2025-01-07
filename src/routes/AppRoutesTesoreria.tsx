@@ -11,6 +11,7 @@ import { Etapas } from "@/features/tesoreria/Etapas/Etapas";
 import { ComexFinanciamiento } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/ComexFinanciamiento/ComexFinanciamiento";
 import { PolizaSeguros } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/PolizaSeguros/PolizaSeguros";
 import { AccionistasAlquileres } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/AccionistasRegalias/AccionistasRegalias";
+import { CreateAccionistas } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/AccionistasRegalias/Create/CreateAccionistas";
 
 export const AppRoutesTesoreria = () => {
 	return (
@@ -32,6 +33,10 @@ export const AppRoutesTesoreria = () => {
 					<Route
 						path="/etapas-tesoreria/revision-obligaciones/alquiler-accionistas-regalias"
 						element={<AccionistasAlquileres />}
+					/>
+					<Route
+						path="/etapas-tesoreria/revision-obligaciones/alquiler-accionistas-regalias/crear"
+						element={<CreateAccionistas />}
 					/>
 				</Routes>
 			</div>
