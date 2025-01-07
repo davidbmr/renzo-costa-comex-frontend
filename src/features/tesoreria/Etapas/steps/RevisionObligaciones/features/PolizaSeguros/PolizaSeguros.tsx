@@ -87,6 +87,7 @@ export const PolizaSeguros = () => {
               text="CREAR"
               backgroundButton="#9B1139"
               colorP="white"
+              onClick={() => addModal.onVisibleModal()}
             />
             <CustomButton text="IMPORTAR" />
             <GenerateExcelButton
