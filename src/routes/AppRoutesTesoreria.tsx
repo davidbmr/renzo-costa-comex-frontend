@@ -12,11 +12,8 @@ import { ComexFinanciamiento } from "@/features/tesoreria/Etapas/steps/RevisionO
 import { PolizaSeguros } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/PolizaSeguros/PolizaSeguros";
 import { AccionistasAlquileres } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/AccionistasRegalias/AccionistasRegalias";
 import { CreateAccionistas } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/AccionistasRegalias/Create/CreateAccionistas";
-<<<<<<< HEAD
 import { PrestamoAccionistas } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/PrestamosAccionistas/PrestamoAccionistas";
-=======
 import { Dividendos } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/Dividendos/Dividendos";
->>>>>>> 865ccfcc52cc50c00b294fc66029f5a92c292f83
 
 export const AppRoutesTesoreria = () => {
 	return (
@@ -50,13 +47,12 @@ export const AppRoutesTesoreria = () => {
 						element={<CreateAccionistas />}
 					/>
 					<Route
-<<<<<<< HEAD
 						path="/etapas-tesoreria/revision-obligaciones/prestamo-accionistas"
 						element={<PrestamoAccionistas />}
-=======
+					/>
+					<Route
 						path="/etapas-tesoreria/revision-obligaciones/dividendos"
 						element={<Dividendos />}
->>>>>>> 865ccfcc52cc50c00b294fc66029f5a92c292f83
 					/>
 				</Routes>
 			</div>

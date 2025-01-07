@@ -1,13 +1,16 @@
 import React from "react";
 import styles from "./PrestamoAccionistas.module.css";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
-import { useNavigate } from "react-router-dom";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
 import { InputText } from "primereact/inputtext";
 import { DataTable } from "@/components/DataTable/DataTable";
+import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
+import { CreatePrestamo } from "./Create/CreatePrestamo";
+import { useModal } from "@/hooks/useModal";
 
 export const PrestamoAccionistas = () => {
-	const navigate = useNavigate();
+
+	const addModal = useModal();
 	return (
 		<>
 			<div className={styles.comex__container}>
@@ -18,11 +21,7 @@ export const PrestamoAccionistas = () => {
 							text="CREAR"
 							backgroundButton="#9B1139"
 							colorP="white"
-							onClick={() =>
-								navigate(
-									"/tesoreria/etapas-tesoreria/revision-obligaciones/alquiler-accionistas-regalias/crear"
-								)
-							}
+							onClick={() => addModal.onVisibleModal()}
 						/>
 						<CustomButton text="IMPORTAR" />
 						<GenerateExcelButton data={[]} mapping={{}} sheetName="SaldosIniciales" />
@@ -38,6 +37,13 @@ export const PrestamoAccionistas = () => {
 
 				<DataTable columns={columns} data={data} isHeaderActive={false} onEye={() => {}} />
 			</div>
+			<PrimeModal
+				header={"Crear Prestamo"}
+				onHideModal={addModal.onHideModal}
+				modalStatus={addModal.modalStatus}
+			>
+				<CreatePrestamo />
+			</PrimeModal>
 		</>
 	);
 };
