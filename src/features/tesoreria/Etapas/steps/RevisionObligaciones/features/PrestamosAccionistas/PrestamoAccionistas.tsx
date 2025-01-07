@@ -9,12 +9,11 @@ import { CreatePrestamo } from "./Create/CreatePrestamo";
 import { useModal } from "@/hooks/useModal";
 
 export const PrestamoAccionistas = () => {
-
 	const addModal = useModal();
 	return (
 		<>
 			<div className={styles.comex__container}>
-				<h2 style={{ color: "#333", textTransform: "uppercase" }}>Resumen de Saldos Iniciales</h2>
+				<h2 style={{ color: "#333", textTransform: "uppercase" }}>Préstamo de Accionistas</h2>
 				<div className={styles.btnContainer}>
 					<div className={styles.btnContent}>
 						<CustomButton

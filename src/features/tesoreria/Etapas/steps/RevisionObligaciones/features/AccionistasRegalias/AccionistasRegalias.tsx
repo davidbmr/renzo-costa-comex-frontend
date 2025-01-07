@@ -68,7 +68,9 @@ export const AccionistasAlquileres = () => {
 	return (
 		<>
 			<div className={styles.comex__container}>
-				<h2 style={{ color: "#333", textTransform: "uppercase" }}>Resumen de Saldos Iniciales</h2>
+				<h2 style={{ color: "#333", textTransform: "uppercase" }}>
+					ALQUILER DE ACCIONISTAS Y REGALIAS
+				</h2>
 				<div className={styles.btnContainer}>
 					<div className={styles.btnContent}>
 						<CustomButton
