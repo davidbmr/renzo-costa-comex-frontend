@@ -32,7 +32,7 @@ export const RevisionObligaciones = () => {
       {
         id: 5,
         title: "DIVIDENDOS",
-        url: "#",
+        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/dividendos",
       },
       {
         id: 6,

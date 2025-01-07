@@ -12,7 +12,7 @@ interface Mapping {
 
 interface GenerateExcelButtonProps {
   data: DataItem[];
-  mapping: Mapping; 
+  mapping?: Mapping; 
   sheetName: string; 
 }
 

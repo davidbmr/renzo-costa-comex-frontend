@@ -98,12 +98,14 @@ export const AccionistasAlquileres = () => {
 					data={testData}
 					isHeaderActive={false}
 					onEye={() => {}}
+					onUpdate={() => {}}
 				/>
 				<DataTable
 					columns={columns2 || []}
 					data={testData2}
 					isHeaderActive={false}
 					onEye={() => {}}
+					onUpdate={() => {}}
 				/>
 			</div>
 			<PrimeModal
