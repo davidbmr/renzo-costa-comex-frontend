@@ -9,42 +9,42 @@ export const RevisionObligaciones = () => {
   const navigate = useNavigate();
   
     const features = [
-      {
-        id: 1,
-        title: "COMEX Y FINANCIAMIENTO",
-        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/comex-financiamiento",
-      },
-      {
-        id: 2,
-        title: "POLIZA DE SEGUROS",
-        url: "#",
-      },
-      {
-        id: 3,
-        title: "ALQUILER DE ACCIONISTAS Y REGALIAS",
-        url: "#",
-      },
-      {
-        id: 4,
-        title: "PRÉSTAMOS DE ACCIONISTAS",
-        url: "#",
-      },
-      {
-        id: 5,
-        title: "DIVIDENDOS",
-        url: "#",
-      },
-      {
-        id: 6,
-        title: "TARJETAS DE CRÉDITOS",
-        url: "#",
-      },
-      {
-        id: 7,
-        title: "CARTA FIANZA",
-        url: "#",
-      },
-    ];
+			{
+				id: 1,
+				title: "COMEX Y FINANCIAMIENTO",
+				url: "/tesoreria/etapas-tesoreria/revision-obligaciones/comex-financiamiento",
+			},
+			{
+				id: 2,
+				title: "POLIZA DE SEGUROS",
+				url: "#",
+			},
+			{
+				id: 3,
+				title: "ALQUILER DE ACCIONISTAS Y REGALÍAS",
+				url: "/tesoreria/etapas-tesoreria/revision-obligaciones/alquiler-accionistas-regalias",
+			},
+			{
+				id: 4,
+				title: "PRÉSTAMOS DE ACCIONISTAS",
+				url: "#",
+			},
+			{
+				id: 5,
+				title: "DIVIDENDOS",
+				url: "#",
+			},
+			{
+				id: 6,
+				title: "TARJETAS DE CRÉDITOS",
+				url: "#",
+			},
+			{
+				id: 7,
+				title: "CARTA FIANZA",
+				url: "#",
+			},
+		];
 
 	return (
 		<>
