@@ -10,6 +10,7 @@ import { Flujo } from "@/features/tesoreria/Etapas/steps/SaldosIniciales/Flujo/F
 import { Etapas } from "@/features/tesoreria/Etapas/Etapas";
 import { ComexFinanciamiento } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/ComexFinanciamiento/ComexFinanciamiento";
 import { PolizaSeguros } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/PolizaSeguros/PolizaSeguros";
+import { AccionistasAlquileres } from "@/features/tesoreria/Etapas/steps/RevisionObligaciones/features/AccionistasRegalias/AccionistasRegalias";
 
 export const AppRoutesTesoreria = () => {
 	return (
@@ -20,10 +21,18 @@ export const AppRoutesTesoreria = () => {
 				<Routes>
 					<Route path="/" element={<Tesoreria />} />
 					<Route path="/etapas-tesoreria" element={<Etapas />} />
-					<Route path="/etapas-tesoreria/saldos-iniciales/creacion" element={<Flujo/>}/>
+					<Route path="/etapas-tesoreria/saldos-iniciales/creacion" element={<Flujo />} />
 					{/* <Route path="/etapas-tesoreria/revision-obligaciones" element={<ComexFinanciamiento/>}/> */}
 					<Route path="/etapas-tesoreria/revision-obligaciones/comex-financiamiento" element={<ComexFinanciamiento/>}/>
 					<Route path="/etapas-tesoreria/revision-obligaciones/poliza-seguros" element={<PolizaSeguros/>}/>
+					<Route
+						path="/etapas-tesoreria/revision-obligaciones/comex-financiamiento"
+						element={<ComexFinanciamiento />}
+					/>
+					<Route
+						path="/etapas-tesoreria/revision-obligaciones/alquiler-accionistas-regalias"
+						element={<AccionistasAlquileres />}
+					/>
 				</Routes>
 			</div>
 		</AppStructure>

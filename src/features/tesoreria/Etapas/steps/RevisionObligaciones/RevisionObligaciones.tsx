@@ -17,12 +17,12 @@ export const RevisionObligaciones = () => {
       {
         id: 2,
         title: "POLIZA DE SEGUROS",
-        url: "#",
+        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/poliza-seguros",
       },
       {
         id: 3,
         title: "ALQUILER DE ACCIONISTAS Y REGALIAS",
-        url: "#",
+        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/alquiler-accionistas-regalias",
       },
       {
         id: 4,
@@ -40,6 +40,7 @@ export const RevisionObligaciones = () => {
         url: "#",
       },
     ];
+
 
 	return (
 		<>
