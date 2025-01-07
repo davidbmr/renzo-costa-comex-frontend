@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import styles from "./AccionistasRegalias.module.css";
-import { useNavigate } from "react-router-dom";
 import { DataTable } from "@/components/DataTable/DataTable";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
 import { InputText } from "primereact/inputtext";
+import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
+import { useModal } from "@/hooks/useModal";
+import { CreateAccionistas } from "./Create/CreateAccionistas";
+import { useNavigate } from "react-router-dom";
 
 export const AccionistasAlquileres = () => {
+	const createModal = useModal();
 	const navigate = useNavigate();
 	const [data] = useState([
 		{
@@ -71,7 +75,11 @@ export const AccionistasAlquileres = () => {
 							text="CREAR"
 							backgroundButton="#9B1139"
 							colorP="white"
-							onClick={() => navigate("/tesoreria/etapas-tesoreria/saldos-iniciales/creacion")}
+							onClick={() =>
+								navigate(
+									"/tesoreria/etapas-tesoreria/revision-obligaciones/alquiler-accionistas-regalias/crear"
+								)
+							}
 						/>
 						<CustomButton text="IMPORTAR" />
 						<GenerateExcelButton data={data} mapping={mapping} sheetName="SaldosIniciales" />
@@ -98,6 +106,14 @@ export const AccionistasAlquileres = () => {
 					onEye={() => {}}
 				/>
 			</div>
+			<PrimeModal
+				header={"Crear nuevo registro"}
+				onHideModal={createModal.onHideModal}
+				modalStatus={createModal.modalStatus}
+				width={10000}
+			>
+				<CreateAccionistas />
+			</PrimeModal>
 		</>
 	);
 };
