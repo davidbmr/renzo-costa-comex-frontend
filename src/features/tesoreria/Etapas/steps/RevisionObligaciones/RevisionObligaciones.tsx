@@ -27,7 +27,7 @@ export const RevisionObligaciones = () => {
       {
         id: 4,
         title: "PRÉSTAMOS DE ACCIONISTAS",
-        url: "#",
+        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/prestamo-accionistas",
       },
       {
         id: 5,
