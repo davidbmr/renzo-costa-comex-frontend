@@ -12,7 +12,7 @@ export const RevisionObligaciones = () => {
       {
         id: 1,
         title: "COMEX Y FINANCIAMIENTO",
-        url: "#",
+        url: "/tesoreria/etapas-tesoreria/revision-obligaciones/comex-financiamiento",
       },
       {
         id: 2,
