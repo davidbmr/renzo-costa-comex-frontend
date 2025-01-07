@@ -18,7 +18,7 @@ export const CreateAccionistas = ({ postFetchData = true, updateFetchData }: Pro
 		<>
 			<MainContentStructure>
 				<h2 style={{ color: "#333", textTransform: "uppercase", marginBottom: "20px" }}>
-					Crear flujo diario
+					Crear Accionistas y Regalías
 				</h2>
 				<div className={style.two__container}>
 					<SelectField
