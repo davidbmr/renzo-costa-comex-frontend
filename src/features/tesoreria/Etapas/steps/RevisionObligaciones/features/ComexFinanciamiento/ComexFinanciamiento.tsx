@@ -2,6 +2,9 @@ import React from "react";
 import style from "./ComexFinanciamiento.module.css";
 import { useNavigate } from "react-router-dom";
 import { DataTable } from "@/components/DataTable/DataTable";
+import { CustomButton } from "@/components/CustomButton/CustomButton";
+import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelButton";
+import { InputText } from "primereact/inputtext";
 
 export const ComexFinanciamiento = () => {
   const navigate = useNavigate();
@@ -9,15 +12,29 @@ export const ComexFinanciamiento = () => {
   // Generar datos aleatorios
   const generateRandomData = (numRows = 10) => {
     const randomDate = (start, end) =>
-      new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+      new Date(
+        start.getTime() + Math.random() * (end.getTime() - start.getTime())
+      )
         .toISOString()
         .split("T")[0];
 
-    const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const randomNumber = (min, max) =>
+      Math.floor(Math.random() * (max - min + 1)) + min;
 
     const estados = ["Activo", "Pendiente", "Cancelado", "Vencido"];
-    const bancos = ["Banco Santander", "BBVA", "Banco Nación", "HSBC", "Citibank"];
-    const proveedores = ["Proveedor ABC", "Proveedor XYZ", "Proveedor 123", "Proveedor LMN"];
+    const bancos = [
+      "Banco Santander",
+      "BBVA",
+      "Banco Nación",
+      "HSBC",
+      "Citibank",
+    ];
+    const proveedores = [
+      "Proveedor ABC",
+      "Proveedor XYZ",
+      "Proveedor 123",
+      "Proveedor LMN",
+    ];
 
     return Array.from({ length: numRows }, () => ({
       banco: bancos[Math.floor(Math.random() * bancos.length)],
@@ -44,10 +61,57 @@ export const ComexFinanciamiento = () => {
 
   const data = generateRandomData(10);
 
+  const mapping = {
+    banco: "banco",
+    numero: "numero",
+    proveedor: "proveedor",
+    fecha: "fecha",
+    valido: "valido",
+    diasEmbarque: "diasEmbarque",
+    dolar: "dolar",
+    saldo: "saldo",
+    euro: "euro",
+    montoUSD: "montoUSD",
+    estado: "estado",
+    primeraFechaVto: "primeraFechaVto",
+    primerMontoVto: "primerMontoVto",
+    segundaFechaVto: "segundaFechaVto",
+    segundoMontoVto: "segundoMontoVto",
+    comisionEmision: "comisionEmision",
+    comisionLiqGastos: "comisionLiqGastos",
+    comisionCancelacion: "comisionCancelacion",
+    comisionTotal: "comisionTotal",
+  };
+
   return (
     <>
       <div className={style.comex__container}>
-        <h2 style={{ color: "#333", textTransform: "uppercase" }}>Revisión de Obligaciones</h2>
+        <h2 style={{ color: "#333", textTransform: "uppercase" }}>
+          Comex y financiamiento
+        </h2>
+
+        <div className={style.btnContainer}>
+          <div className={style.btnContent}>
+            <CustomButton
+              text="CREAR"
+              backgroundButton="#9B1139"
+              colorP="white"
+            />
+            <CustomButton text="IMPORTAR" />
+            <GenerateExcelButton
+              data={data}
+              mapping={mapping}
+              sheetName="SaldosIniciales"
+            />
+          </div>
+
+          <div className="flex justify-content-end">
+            <span className="p-input-icon-left">
+              <i className="pi pi-search" />
+              <InputText type="search" placeholder="Buscar..." />
+            </span>
+          </div>
+        </div>
 
         <DataTable
           columns={columns}

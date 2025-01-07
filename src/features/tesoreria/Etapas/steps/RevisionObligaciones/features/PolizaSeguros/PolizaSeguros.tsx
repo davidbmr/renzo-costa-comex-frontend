@@ -9,6 +9,7 @@ import GenerateExcelButton from "@/components/GenerateExcelButton/GenerateExcelB
 import { Divider } from "primereact/divider";
 import { FaDollarSign, FaCoins } from "react-icons/fa";
 import { ModalTables } from "./Modals/ModalTable/ModalTable";
+import { InputText } from "primereact/inputtext";
 
 export const PolizaSeguros = () => {
   const addModal = useModal();
@@ -81,20 +82,27 @@ export const PolizaSeguros = () => {
       </h2>
 
       <div className={style.btnContainer}>
-        <CustomButton
-          text="Crear"
-          backgroundButton="#9B1139"
-          colorP="white"
-          onClick={() => addModal.onVisibleModal()}
-        />
-        <CustomButton text="Importar" />
-        <GenerateExcelButton
-          data={data}
-          mapping={mapping}
-          sheetName="Proveedores"
-        />
-      </div>
+          <div className={style.btnContent}>
+            <CustomButton
+              text="CREAR"
+              backgroundButton="#9B1139"
+              colorP="white"
+            />
+            <CustomButton text="IMPORTAR" />
+            <GenerateExcelButton
+              data={data}
+              mapping={mapping}
+              sheetName="SaldosIniciales"
+            />
+          </div>
 
+          <div className="flex justify-content-end">
+            <span className="p-input-icon-left">
+              <i className="pi pi-search" />
+              <InputText type="search" placeholder="Buscar..." />
+            </span>
+          </div>
+        </div>
       <DataTable
         columns={columns}
         data={data}
@@ -154,7 +162,7 @@ export const PolizaSeguros = () => {
       />
 
       <PrimeModal
-        header="Agregar COMEX"
+        header="Agregar programación de pagos de pólizas"
         modalStatus={addModal.modalStatus}
         onHideModal={addModal.onHideModal}
         width={700}
