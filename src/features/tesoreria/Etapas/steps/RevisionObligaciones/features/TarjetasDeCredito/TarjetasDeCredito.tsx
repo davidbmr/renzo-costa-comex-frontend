@@ -88,7 +88,9 @@ export const TarjetasDeCredito = () => {
   };
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Tarjetas de Crédito</h2>
+      <h2 style={{ color: "#333", textTransform: "uppercase" }}>
+        Tarjetas de Crédito
+      </h2>
 
       <div className={styles.btnContainer}>
         <div className={styles.btnContent}>
