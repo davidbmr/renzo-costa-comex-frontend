@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { SaldosIniciales } from "./steps/SaldosIniciales/SaldosIniciales";
 import { RevisionCuentasPagar } from "./steps/RevisionCuentasPagar/RevisionCuentasPagar";
 import { RevisionObligaciones } from "./steps/RevisionObligaciones/RevisionObligaciones";
+import { ResumenCuentasPagar } from "./steps/ResumenCuentasPagar/ResumenCuentasPagar";
 
 export const Etapas = () => {
   const { currentStep } = useAppSelector((state) => state.tesoreria);
@@ -60,8 +61,9 @@ export const Etapas = () => {
 
       {currentStep === 0 && <SaldosIniciales />}
       {currentStep === 1 && <RevisionCuentasPagar />}
-      {currentStep === 2 && <RevisionObligaciones />}
-      {currentStep === 3 && <SaldosIniciales />}
+      {currentStep === 2 && <ResumenCuentasPagar />}
+      {currentStep === 3 && <RevisionObligaciones />}
+      {currentStep === 4 && <SaldosIniciales />}
     </MainContentStructure>
   );
 };
@@ -72,6 +74,9 @@ const items: any[] = [
   },
   {
     label: "Revisión de Cuentas Pagar",
+  },
+  {
+    label: "Resumen de Cuentas Pagar",
   },
   {
     label: "Revisión de Obligaciones",
