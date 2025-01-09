@@ -75,12 +75,6 @@ export const RevisionCuentasPagar = () => {
 				<div className={styles.btnContent}>
 					<CustomButton text="IMPORTAR" />
 					<GenerateExcelButton data={data} mapping={mapping} sheetName="RevicionCuentasPagar" />
-					<CustomButton
-						text="DESCARGAR RESUMEN"
-						backgroundButton="#9B1139"
-						colorP="white"
-						onClick={addModal.onVisibleModal}
-					/>
 				</div>
 
 				<div className={styles.filter__container}>
