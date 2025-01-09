@@ -79,7 +79,7 @@ export const Tesoreria = () => {
   return (
     <>
       <MainContentStructure>
-        <h2 style={{ color: "#333", textTransform: "uppercase" }}>Tesorería</h2>
+        <h2 style={{ color: "#333", textTransform: "uppercase" }}>Saldos Iniciales</h2>
         <div className={styles.btnContainer}>
           <div className={styles.btnContent}>
             <CustomButton
