@@ -10,6 +10,7 @@ import { SaldosIniciales } from "./steps/SaldosIniciales/SaldosIniciales";
 import { RevisionCuentasPagar } from "./steps/RevisionCuentasPagar/RevisionCuentasPagar";
 import { RevisionObligaciones } from "./steps/RevisionObligaciones/RevisionObligaciones";
 import { ResumenCuentasPagar } from "./steps/ResumenCuentasPagar/ResumenCuentasPagar";
+import { PagosInicialesMasivos } from "./steps/PagosInicialesMasivos/PagosInicialesMasivos";
 
 export const Etapas = () => {
   const { currentStep } = useAppSelector((state) => state.tesoreria);
@@ -63,7 +64,7 @@ export const Etapas = () => {
       {currentStep === 1 && <RevisionCuentasPagar />}
       {currentStep === 2 && <ResumenCuentasPagar />}
       {currentStep === 3 && <RevisionObligaciones />}
-      {currentStep === 4 && <SaldosIniciales />}
+      {currentStep === 4 && <PagosInicialesMasivos />}
     </MainContentStructure>
   );
 };
