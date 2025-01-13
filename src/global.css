@@ -70,3 +70,12 @@ input[type="number"] {
   border-color: var(--primary-color-app)!important;
   background: var(--primary-color-app)!important;
 }
+
+input[type="radio" i]{
+  width: 20px;
+  height: 20px;
+}
+
+input[type="radio"]:checked {
+  accent-color: var(--primary-color-app) !important;
+}
