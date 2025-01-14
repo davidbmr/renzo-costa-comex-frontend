@@ -8,6 +8,7 @@ import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
 import { RadioButtonField } from "@/components/RadioButtonField/RadioButtonField";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModalProveedores } from "@/components/modals/AddModalProveedores/AddModalProveedores";
+import { AddModal } from "./AddModal/AddModal";
 
 export const PagosInicialesMasivos = () => {
 	const addModal = useModal();
@@ -58,19 +59,19 @@ export const PagosInicialesMasivos = () => {
 					direction="row"
 					labelWidth="140px"
 				/>
-				<CustomButton text="Siguiente" backgroundButton="#9B1139" colorP="white"/>
+				<CustomButton text="Siguiente" backgroundButton="#9B1139" colorP="white" onClick={addModal.onVisibleModal}/>
 			</div>
 
 			<ConfirmacionEtapa />
 
 			{/* Add Modal */}
 			<PrimeModal
-				header="Elegir el o los proveedores"
+				header="Elegir proveedores"
 				modalStatus={addModal.modalStatus}
 				onHideModal={addModal.onHideModal}
 				width={700}
 			>
-				<AddModalProveedores />
+				<AddModal postFetchData={true}/>
 			</PrimeModal>
 		</>
 	);
