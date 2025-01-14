@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./PagosInicialesMasivos.module.css";
 import { ConfirmacionEtapa } from "../../ConfirmacionEtapa/ConfirmacionEtapa";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import { SelectField } from "@/components/SelectField/SelectField";
 import { useModal } from "@/hooks/useModal";
-import { CheckBoxField } from "@/components/CheckBoxField/CheckBoxField";
 import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
 import { RadioButtonField } from "@/components/RadioButtonField/RadioButtonField";
+import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
+import { AddModalProveedores } from "@/components/modals/AddModalProveedores/AddModalProveedores";
 
 export const PagosInicialesMasivos = () => {
 	const addModal = useModal();
@@ -25,7 +26,7 @@ export const PagosInicialesMasivos = () => {
 		<>
 			<div className={styles.date__container}>
 				<RadioButtonField
-        title="Parámetros de Filtrado"
+					title="Parámetros de Filtrado"
 					options={options}
 					name="tipoPago"
 					selectedValue={selectedOption}
@@ -57,10 +58,20 @@ export const PagosInicialesMasivos = () => {
 					direction="row"
 					labelWidth="140px"
 				/>
-				<CustomButton text="Buscar" backgroundButton="#9B1139" colorP="white" />
+				<CustomButton text="Siguiente" backgroundButton="#9B1139" colorP="white"/>
 			</div>
 
 			<ConfirmacionEtapa />
+
+			{/* Add Modal */}
+			<PrimeModal
+				header="Elegir el o los proveedores"
+				modalStatus={addModal.modalStatus}
+				onHideModal={addModal.onHideModal}
+				width={700}
+			>
+				<AddModalProveedores />
+			</PrimeModal>
 		</>
 	);
 };

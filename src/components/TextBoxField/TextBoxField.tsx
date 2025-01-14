@@ -13,6 +13,7 @@ interface TextBoxFieldProps {
 	disabled?: boolean;
 	labelWidth?: string;
 	placeholder?: string;
+	containerWidth?: string;
 }
 
 export const TextBoxField = ({
@@ -24,18 +25,23 @@ export const TextBoxField = ({
 	direction = "column",
 	disabled = false,
 	labelWidth = "100%",
+	containerWidth = "100%",
 	placeholder,
 }: TextBoxFieldProps) => {
 	const styles: React.CSSProperties = {
 		width: labelWidth,
 		fontSize: "14px",
 	}
+	const stylesContainer: React.CSSProperties = {
+		width: containerWidth,
+	};
 
 	return (
 		<div
 			className={`${style.item__group} ${
 				direction === "column" ? style.item__column : style.item__row
 			}`}
+			style={stylesContainer}
 		>
 			{textLabel ? <label style={styles}>{textLabel}</label> : <></>}
 
