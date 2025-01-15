@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import style from "./AddModal.module.css";
-import { handleChangeInput } from "@/helpers/handleTextBox";
 import { Button } from "primereact/button";
-import { DateField } from "@/components/DateField/DateField";
 import { DataTable } from "@/components/DataTable/DataTable";
-import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
 import { CustomButton } from "@/components/CustomButton/CustomButton";
 import { useModal } from "@/hooks/useModal";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModalProveedores } from "@/components/modals/AddModalProveedores/AddModalProveedores";
+import { AddModalFactura } from "../AddModalFactura/AddModalFactura";
 
 interface PropsAddModal {
   postFetchData?: any;
@@ -16,6 +14,7 @@ interface PropsAddModal {
 
 export const AddModal = ({ postFetchData }: PropsAddModal) => {
   const addModal = useModal();
+  const addModalFactura = useModal();
   const [newData, setNewData] = useState<any>({
     fechaIni: "",
     fechaFin: "",
@@ -51,7 +50,7 @@ export const AddModal = ({ postFetchData }: PropsAddModal) => {
         <div>
           <Button
             className="p-button-sm p-button-info mr-2"
-            onClick={handleCreate}
+            onClick={addModalFactura.onVisibleModal}
           >
             Siguiente
           </Button>
@@ -65,6 +64,15 @@ export const AddModal = ({ postFetchData }: PropsAddModal) => {
         width={700}
       >
         <AddModalProveedores />
+      </PrimeModal>
+      {/* Add Modal */}
+      <PrimeModal
+        header="Facturas"
+        modalStatus={addModalFactura.modalStatus}
+        onHideModal={addModalFactura.onHideModal}
+        width={1400}
+      >
+        <AddModalFactura />
       </PrimeModal>
     </>
   );
