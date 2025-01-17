@@ -5,7 +5,7 @@ import { TreeDataTable } from "@/components/TreeDataTable/TreeDataTable";
 export const AddModalFactura = () => {
   return (
     <>
-        <TreeDataTable columns={columns} data={dato} />
+        <TreeDataTable columns={columns} data={dato} isPaginator/>
       <br />
       <CustomButton
         text="Enviar"
