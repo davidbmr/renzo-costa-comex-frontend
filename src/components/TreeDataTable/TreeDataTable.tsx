@@ -40,6 +40,7 @@ export const TreeDataTable = ({ columns, data, isPaginator, tableStyle }: TreeDa
 			selectionKeys={selectedNodeKeys}
 			onSelectionChange={(e: TreeTableSelectionEvent) => setSelectedNodeKeys(e.value)}
 			tableStyle={{ minWidth: "50rem" }}
+			scrollable
 		>
 			{columns &&
 				columns.map((column, index) => (
@@ -47,6 +48,7 @@ export const TreeDataTable = ({ columns, data, isPaginator, tableStyle }: TreeDa
 						key={column.campo + index}
 						field={column.campo}
 						header={column.nombre}
+						style={{ width: column.size || "250px" }}
 						{...(index === 0 && { expander: true })}
 					></Column>
 				))}
