@@ -90,7 +90,7 @@ export const SaldosBanacarios = () => {
           columns={columns || []}
           data={data || []}
           isHeaderActive={false}
-          onEye={() => navigate("/gestion-financiera")}
+          onEye={() => navigate("/gestion-financiera/saldos-bancarios/detalle")}
           onUpdate={() => {}}
         />
       </MainContentStructure>
