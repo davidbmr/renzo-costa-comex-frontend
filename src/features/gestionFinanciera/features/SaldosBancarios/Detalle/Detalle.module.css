@@ -60,3 +60,7 @@
     color: #555;
   }
   
+  .btn__content{
+    display: flex;
+    justify-content: center;
+  }

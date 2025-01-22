@@ -23,6 +23,11 @@ export const Detalle = () => {
     estado: "Estado",
   };
 
+   const handleNavigate = () => {
+    const url = "https://app.powerbi.com/view?r=eyJrIjoiNzEyZWI3YTEtYmUwNi00NTRjLTg4NjctZDdiMjljZTYxMTE2IiwidCI6ImI0YTQwNTQ1LTc3NzktNGIzOC1hZmY3LTFmMTczOGY4MDg0MCIsImMiOjR9";
+    window.open(url, "_blank");
+  };
+
   return (
     <>
       <MainContentStructure>
@@ -73,6 +78,7 @@ export const Detalle = () => {
             </div>
           }
         />
+        <br />
         <DataTable
           columns={columns2 || []}
           dataKey="banco"
@@ -106,6 +112,7 @@ export const Detalle = () => {
             </div>
           }
         />
+        <br />
         <DataTable
           columns={columns3 || []}
           dataKey="banco"
@@ -118,9 +125,7 @@ export const Detalle = () => {
                 <div className={styles.totalItem}>
                   <FaCoins className={styles.icon} />
                   <div>
-                    <p className={styles.label}>
-                      Saldo Final en Soles
-                    </p>
+                    <p className={styles.label}>Saldo Final en Soles</p>
                     <span className={styles.value}>{`S/ 3,491,144`}</span>
                   </div>
                 </div>
@@ -128,9 +133,7 @@ export const Detalle = () => {
                 <div className={styles.totalItem}>
                   <FaDollarSign className={styles.icon} />
                   <div>
-                    <p className={styles.label}>
-                      Saldo Final en Dólares
-                    </p>
+                    <p className={styles.label}>Saldo Final en Dólares</p>
                     <span className={styles.value}>{`$ 1,596,484`}</span>
                   </div>
                 </div>
@@ -138,6 +141,10 @@ export const Detalle = () => {
             </div>
           }
         />
+        <br />
+        <div className={styles.btn__content}>
+          <CustomButton text="Reporte" backgroundButton="#333" colorP="white" onClick={handleNavigate}/>
+        </div>
       </MainContentStructure>
     </>
   );
@@ -182,20 +189,44 @@ const data2 = [
 
 const columns3 = [
   { nombre: "Obligaciones", campo: "obligaciones" },
-  { nombre: "Soles", campo: "soles"},
+  { nombre: "Soles", campo: "soles" },
   { nombre: "Dólares", campo: "dolares" },
 ];
 
-const obligaciones =[
-    {obligaciones:"ALQUILER LOCAL COMERCIAL", soles:"S/-1,232,200", dolares:"$-45,907"},
-    {obligaciones:"ALQUILERES SEDES DIRECTORES", soles:"S/-83,400", dolares:"$-13,250"},
-    {obligaciones:"PLANILLA", soles:"S/-2,161,500", dolares:""},
-    {obligaciones:"PROVEEDORES", soles:"S/-2,653,162.164", dolares:"$-131,053.056"},
-    {obligaciones:"COMEX", soles:"S/-588,054.258", dolares:"$-719,110.34"},
-    {obligaciones:"IMPUESTOS", soles:"S/-2,115,126.056", dolares:""},
-    {obligaciones:"FINANCIAMIENTO", soles:"", dolares:"$-385,154.243"},
-    {obligaciones:"DIVIDENDOS ACCIONISTAS", soles:"S/-3,970,196", dolares:""},
-    {obligaciones:"REGALIAS ACCIONISTAS", soles:"S/-6,371,295.872", dolares:""},
-    {obligaciones:"COMPRA DÓLARES", soles:"", dolares:""},
-    {obligaciones:"TOTAL DE OBLIGACIONES", soles:"S/29,380,934", dolares:"$-1,294,475"},
-]
+const obligaciones = [
+  {
+    obligaciones: "ALQUILER LOCAL COMERCIAL",
+    soles: "S/-1,232,200",
+    dolares: "$-45,907",
+  },
+  {
+    obligaciones: "ALQUILERES SEDES DIRECTORES",
+    soles: "S/-83,400",
+    dolares: "$-13,250",
+  },
+  { obligaciones: "PLANILLA", soles: "S/-2,161,500", dolares: "" },
+  {
+    obligaciones: "PROVEEDORES",
+    soles: "S/-2,653,162.164",
+    dolares: "$-131,053.056",
+  },
+  { obligaciones: "COMEX", soles: "S/-588,054.258", dolares: "$-719,110.34" },
+  { obligaciones: "IMPUESTOS", soles: "S/-2,115,126.056", dolares: "" },
+  { obligaciones: "FINANCIAMIENTO", soles: "", dolares: "$-385,154.243" },
+  {
+    obligaciones: "DIVIDENDOS ACCIONISTAS",
+    soles: "S/-3,970,196",
+    dolares: "",
+  },
+  {
+    obligaciones: "REGALIAS ACCIONISTAS",
+    soles: "S/-6,371,295.872",
+    dolares: "",
+  },
+  { obligaciones: "COMPRA DÓLARES", soles: "", dolares: "" },
+  {
+    obligaciones: "TOTAL DE OBLIGACIONES",
+    soles: "S/29,380,934",
+    dolares: "$-1,294,475",
+  },
+];
