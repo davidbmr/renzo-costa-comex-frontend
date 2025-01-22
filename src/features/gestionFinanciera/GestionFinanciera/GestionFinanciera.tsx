@@ -10,7 +10,7 @@ export const GestionFinanciera = () => {
     {
       id: 1,
       title: "SALDOS BANCARIOS",
-      url: "#",
+      url: "/gestion-financiera/saldos-bancarios",
     },
     {
       id: 2,

@@ -5,6 +5,7 @@ import style from "./AppRoutes.module.css";
 import { AppStructure } from "../components/AppStructure/AppStructure";
 import { HeaderModule } from "@/components/HeaderModule/HeaderModule";
 import { GestionFinanciera } from "@/features/gestionFinanciera/GestionFinanciera/GestionFinanciera";
+import { SaldosBanacarios } from "@/features/gestionFinanciera/features/SaldosBancarios/SaldosBancarios";
 
 
 export const AppRoutesGestionFinanciera = () => {
@@ -15,7 +16,7 @@ export const AppRoutesGestionFinanciera = () => {
 			<div className={style.routesContainer}>
 				<Routes>
 					<Route path="/" element={<GestionFinanciera />} />
-					{/* <Route path="/etapas-tesoreria" element={<Etapas />} /> */}
+					<Route path="/saldos-bancarios" element={<SaldosBanacarios />} />
 					
 					
 				</Routes>
