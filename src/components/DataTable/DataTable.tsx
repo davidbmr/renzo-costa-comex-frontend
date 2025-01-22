@@ -22,6 +22,7 @@ interface DataTableProps {
 	}; // Nuevo prop para customButtonProps
 	children?: React.ReactNode;
 	isPaginator?: boolean;
+	dataKey?: string;
 }
 
 export const DataTable = ({
@@ -39,6 +40,7 @@ export const DataTable = ({
 	customButtonProps, // Acepta el nuevo prop
 	children,
 	isPaginator,
+	dataKey
 }: DataTableProps) => {
 	return (
 		<SectionStructure>
@@ -61,6 +63,7 @@ export const DataTable = ({
 				isEyeDisabled={isEyeDisabled}
 				customButtonProps={customButtonProps} // Pasa el prop a PrimeDataTable
 				isPaginator={isPaginator}
+				dataKey={dataKey}
 			/>
 
 			{children ? <div>{children}</div> : null}
