@@ -9,6 +9,7 @@ import { Modules } from "@/features/Modules/Modules";
 import { AppRoutesComex } from "./AppRoutesComex";
 import { AppRoutesConfiguracion } from "./AppRoutesConfiguracion";
 import { AppRoutesTesoreria } from "./AppRoutesTesoreria";
+import { AppRoutesGestionFinanciera } from "./AppRoutesGestionFinanciera";
 
 export function AppRoutes() {
 	const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ export function AppRoutes() {
 
 						<Route path="/comex/*" element={<AppRoutesComex />} />
 						<Route path="/tesoreria/*" element={<AppRoutesTesoreria />} />
+						<Route path="/gestion-financiera/*" element={<AppRoutesGestionFinanciera />} />
 						<Route path="/configuracion/*" element={<AppRoutesConfiguracion selectedModule={selectedModule} />} />
 						<Route path="/admin/*" element={<AppRoutesAdmin selectedModule={selectedModule} />} />
 						<Route path="/*" element={<Navigate to="/modules" />} />

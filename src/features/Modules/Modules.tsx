@@ -21,7 +21,7 @@ export const Modules = () => {
 			title: "Gestión financiera",
 			description: "Módulo de gestión financiera",
 			action: "Ingresar al módulo",
-			url: "#",
+			url: "/gestion-financiera",
 		},
 		{
 			id: 3,
