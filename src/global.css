@@ -7,8 +7,12 @@
 
 :root {
   /* --primary-color-app: #232c3d; */
-  --primary-color-app: #9B1139;
-  --secondary-color-app: #ff672b;
+  /* --primary-color-app: #9B1139; */
+  --primary-color-app: #000;
+  /* --secondary-color-app: #ff672b; */
+  --secondary-color-app: #eaeaea;
+  --red-color-app: #b34a61;
+  --color-app: #888888;
   --background-app: #f3f4f6;
   --border-color-app: #e5e7eb;
 }

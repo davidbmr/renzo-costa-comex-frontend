@@ -20,6 +20,12 @@
 	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
+.icon{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
 .title {
 	font-size: 1.2rem;
 	color: #333;
@@ -43,7 +49,8 @@
 }
 
 .actionButton:hover {
-	background-color: var(--primary-color-app);
+	background-color: var(--color-app);
+	color: var(--primary-color-app);
 }
 
 .banner__modules {
