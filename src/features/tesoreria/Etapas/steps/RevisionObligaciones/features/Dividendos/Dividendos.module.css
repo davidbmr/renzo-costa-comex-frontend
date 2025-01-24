@@ -32,7 +32,7 @@
   
   .icon {
     font-size: 1.5rem;
-    color: #9b1139;
+    color: var(--red-color-app);
   }
   
   .totalContent {
@@ -53,7 +53,7 @@
   .cancelledText {
     font-size: 1rem;
     font-weight: bold;
-    color: red;
+    color: var(--red-color-app);
   }
   
   .btnContainer{

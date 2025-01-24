@@ -62,7 +62,7 @@ export const PagosInicialesMasivos = () => {
         />
         <CustomButton
           text="Siguiente"
-          backgroundButton="#9B1139"
+          backgroundButton="var(--primary-color-app)"
           colorP="white"
           onClick={addModal.onVisibleModal}
         />
