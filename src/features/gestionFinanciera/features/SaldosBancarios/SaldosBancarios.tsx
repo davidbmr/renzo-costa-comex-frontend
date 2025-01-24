@@ -68,7 +68,7 @@ export const SaldosBanacarios = () => {
           <div className={styles.btnContent}>
             <CustomButton
               text="CREAR"
-              backgroundButton="#9B1139"
+              backgroundButton="var(--primary-color-app)"
               colorP="white"
             />
             <GenerateExcelButton

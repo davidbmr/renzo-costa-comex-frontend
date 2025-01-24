@@ -45,7 +45,7 @@
   
   .totalItem .icon {
     font-size: 2rem;
-    color: #9b1139;
+    color: var(--red-color-app);
   }
   
   .totalItem .label {

@@ -38,7 +38,7 @@ export const Detalle = () => {
           <div className={styles.btnContent}>
             <CustomButton
               text="CREAR"
-              backgroundButton="#9B1139"
+              backgroundButton="var(--primary-color-app)"
               colorP="white"
             />
             <GenerateExcelButton
@@ -115,7 +115,7 @@ export const Detalle = () => {
         <br />
         <DataTable
           columns={columns3 || []}
-          dataKey="banco"
+          dataKey="obligaciones"
           data={obligaciones || []}
           isHeaderActive={false}
           onUpdate={() => {}}
