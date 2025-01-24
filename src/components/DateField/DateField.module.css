@@ -12,3 +12,13 @@
 	grid-template-columns: max-content 1fr;
 	align-items: center;
 }
+
+.error__message {
+	color: red;
+	font-size: 12px;
+	text-align: end;
+}
+
+.input__error {
+	border: 1px solid red;
+}

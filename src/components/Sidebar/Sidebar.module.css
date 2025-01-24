@@ -121,6 +121,10 @@
 	border-radius: 5px;
 	width: 100%;
 	cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .expanded {
@@ -175,3 +179,26 @@
 .list__container::-webkit-scrollbar-thumb:hover {
   background-color: #9ca3af;
 }
+
+
+.logoutContainer {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  bottom: 0;
+  padding-right: 40px;
+}
+
+.logoutButton {
+  background: var(--primary-color-app);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+

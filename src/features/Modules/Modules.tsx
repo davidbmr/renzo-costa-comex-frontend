@@ -39,12 +39,12 @@ export const Modules = () => {
 			url: "/tesoreria",
 		},
 		{
-			id: 3,
+			id: 4,
 			icon:<DiAptana size={40}/>,
 			title: "Configuración",
 			description: "Módulo de configuración",
 			action: "Ingresar al módulo",
-			url: "#",
+			url: "/configuracion",
 		},
 	];
 
