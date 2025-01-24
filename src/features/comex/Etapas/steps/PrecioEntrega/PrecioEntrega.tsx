@@ -44,7 +44,7 @@ export const PrecioEntrega = () => {
 			<div className={styles.btnContainer}>
 				<CustomButton
 					text="Crear"
-					backgroundButton="#9B1139"
+					backgroundButton="var(--primary-color-app)"
 					colorP="white"
 					onClick={addModal.onVisibleModal}
 				/>
