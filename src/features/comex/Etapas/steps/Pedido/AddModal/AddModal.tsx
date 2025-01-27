@@ -42,9 +42,11 @@ export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAd
 				}
 			}
 		});
-
+		
 		postFetchData(formData);
 	};
+
+	console.log(newData)
 
 	const handleUpdate = async () => {
 		const { id, ...restData } = newData;
