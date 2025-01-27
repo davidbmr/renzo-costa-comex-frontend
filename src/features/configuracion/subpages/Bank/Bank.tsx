@@ -2,12 +2,12 @@ import { CustomButton } from "@/components/CustomButton/CustomButton";
 import { MainContentStructure } from "@/components/MainContentStructure/MainContentStructure";
 import { useModal } from "@/hooks/useModal";
 import React, { useState } from "react";
-import styles from "./Users.module.css";
+import styles from "./Bank.module.css";
 import { DataTable } from "@/components/DataTable/DataTable";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModal } from "./AddModal/AddModal";
 
-export const Users = () => {
+export const Bank = () => {
   const addModal = useModal();
 const [selectedUser, setSelectedUser] = useState(null)
 
@@ -22,9 +22,10 @@ const handleEditSelection = (rowData) => {
     addModal.onVisibleModal();
   };
 
+
   return (
     <MainContentStructure>
-      <h2 style={{ color: "#333", textTransform: "uppercase" }}>Usuarios</h2>
+      <h2 style={{ color: "#333", textTransform: "uppercase" }}>Bancos</h2>
       <div className={styles.btnContainer}>
         <CustomButton
           text="Crear"
@@ -45,7 +46,7 @@ const handleEditSelection = (rowData) => {
 
       {/* Add Modal */}
       <PrimeModal
-        header={selectedUser ? "Editar Usuario" : "Agregar Usuario"}
+        header={selectedUser ? "Editar Banco" : "Agregar Banco"}
         modalStatus={addModal.modalStatus}
         onHideModal={addModal.onHideModal}
         width={600}

@@ -127,6 +127,36 @@ export const appRoutesConf = [
           displayText: "Usuarios",
         },
       },
+      {
+        path: "/configuracion/rol",
+        sidebarProps: {
+          displayText: "Roles",
+        },
+      },
+      {
+        path: "/configuracion/provider",
+        sidebarProps: {
+          displayText: "Proveedores",
+        },
+      },
+      {
+        path: "/configuracion/products",
+        sidebarProps: {
+          displayText: "Productos",
+        },
+      },
+      {
+        path: "/configuracion/bank",
+        sidebarProps: {
+          displayText: "Bancos",
+        },
+      },
+      {
+        path: "/configuracion/model",
+        sidebarProps: {
+          displayText: "Modelos",
+        },
+      },
     ],
   },
 ];
