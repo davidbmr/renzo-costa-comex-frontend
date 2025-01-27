@@ -9,7 +9,7 @@ api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("rt__renzo__costa");
     if (token) {
-      config.headers['access_token'] = token; // Usar 'access_token' en lugar de 'Authorization'
+      config.headers['Authorization'] = `Bearer ${token}`; // Usar 'Authorization' con el formato 'Bearer <token>'
     }
     return config;
   },
@@ -25,7 +25,7 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
- 
+    // Si hay un error 401 (no autorizado), intentamos hacer un refresh del token
     if (error.response && error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
@@ -33,13 +33,13 @@ api.interceptors.response.use(
       if (refreshToken) {
         try {
           const { data } = await axios.post(`${url}auth/refreshToken`, { token: refreshToken });
+          
+          // Guardamos el nuevo token
           localStorage.setItem("rt__renzo__costa", data.token);
-          originalRequest.headers['access_token'] = data.token;
+          originalRequest.headers['Authorization'] = `Bearer ${data.token}`; // Usar el nuevo token en el header
 
-     
-          return api(originalRequest);
+          return api(originalRequest); // Reintentar la solicitud original con el nuevo token
         } catch (refreshError) {
-        
           localStorage.removeItem("rt__renzo__costa");
           return Promise.reject(refreshError);
         }
