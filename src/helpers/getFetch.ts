@@ -3,7 +3,7 @@ import { url } from "@/connections/mainApi";
 
 export let getFetch = async (path: string) => {
 	try {
-		const token = localStorage.getItem("rt__renzo__costa"); // Obteniendo el token JWT del localStorage
+		const token = localStorage.getItem("rt__grifosBackoffice"); // Obteniendo el token JWT del localStorage
 		const headers = {
 			Authorization: `Bearer ${token}`,
 		};

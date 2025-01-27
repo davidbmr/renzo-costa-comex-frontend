@@ -39,7 +39,7 @@ export const useDeleteFetch = (
 
 	const deleteFetchData = async (id: string) => {
 		try {
-			const token = localStorage.getItem("rt__renzo__costa");
+			const token = localStorage.getItem("rt__eva");
 			const headers = {
 				Authorization: `Bearer ${token}`,
 			};

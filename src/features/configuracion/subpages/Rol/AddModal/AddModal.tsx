@@ -14,21 +14,16 @@ import {
 
 interface PropsAddModal {
   postFetchData?: any;
-  updateFetchData?: any;
-  initialData?: any;
-  onHideModal?: any;
 }
 
 const getSchemaConfig = (isEdit: boolean): SchemaConfig => ({
-  name: { type: "string", required: true },
+  role: { type: "string", required: true },
+
 });
 
-export const AddModal = ({
-  postFetchData,
-  initialData,
-  updateFetchData,
-  onHideModal,
-}: PropsAddModal) => {
+
+
+export const AddModal = ({ postFetchData, initialData }) => {
   const validationSchema = createValidationSchema(
     getSchemaConfig(!!initialData)
   );
@@ -42,53 +37,43 @@ export const AddModal = ({
     resetForm,
   } = useForm({
     initialValues: {
-      name: "",
+      role:""
     },
     validationSchema,
   });
 
+  // Actualiza los valores del formulario cuando cambie `initialData`
   useEffect(() => {
     if (initialData) {
-      setAllValues(initialData);
+      setAllValues(initialData); // Mapear los valores
     } else {
-      resetForm();
+      resetForm(); // Limpiar el formulario si no hay datos iniciales
     }
-  }, [initialData]);
+  }, [initialData]); // Solo depende de `initialData`
 
   const handleSubmit = async () => {
     const isValid = await validateForm();
     if (isValid) {
-      const dataToSend = {
-        name: values.name,
-      };
-
-      if (initialData) {
-        // await updateFetchData(initialData.id, dataToSend);
-        console.log(dataToSend)
-        onHideModal();
-      } else {
-        console.log(dataToSend)
-        // await postFetchData(dataToSend);
-        onHideModal();
-      }
-      // console.log("Datos enviados:", dataToSend);
+      console.log("Datos enviados:", values);
     } else {
       console.error("Errores de validación:", errors);
     }
   };
 
+ 
   return (
     <div className={style.column__container}>
       <TextBoxField
         textLabel="Nombre:"
-        name="name"
-        value={values.name}
+        name="role"
+        value={values.role}
         onChange={handleChange}
         direction="row"
         labelWidth="120px"
-        errorMessage={errors.name}
+        errorMessage={errors.role}
       />
 
+     
       <div>
         <Button
           className="p-button-sm p-button-info mr-2"

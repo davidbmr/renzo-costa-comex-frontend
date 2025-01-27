@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./DateField.module.css";
+
 import { Calendar } from "primereact/calendar";
 
 interface Props {
@@ -69,7 +70,9 @@ export const DateField = ({
         )}
       </div>
 
-      {errorMessage && <small className={style.error__message}>{errorMessage}</small>}
+	  {errorMessage && errorMessage.trim() !== "" && (
+				<small className={style.error__message}>{errorMessage}</small>
+			)}
     </div>
   );
 };

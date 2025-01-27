@@ -6,14 +6,10 @@ import styles from "./Users.module.css";
 import { DataTable } from "@/components/DataTable/DataTable";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModal } from "./AddModal/AddModal";
-import { useGetFetch } from "@/hooks/useGetFetch";
 
 export const Users = () => {
   const addModal = useModal();
 const [selectedUser, setSelectedUser] = useState(null)
-const FetchUserData = useGetFetch("user?page=1&page_size=10&name=&order_by=id&order=ASC&relations=1&is_active=1")
-
-console.log(FetchUserData.data)
 
 const handleEditSelection = (rowData) => {
     setSelectedUser(rowData);
