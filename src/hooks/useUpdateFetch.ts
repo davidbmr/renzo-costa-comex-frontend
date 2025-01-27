@@ -53,7 +53,7 @@ export const useUpdateFetch = (
     const updateFetchData = async (id: string, data: any): Promise<any> => {
         setIsLoadingUpdate(true);
 
-        const token = localStorage.getItem("rt__eva__backoffice");
+        const token = localStorage.getItem("rt__renzo__costa");
         const headers = {
             Authorization: `Bearer ${token}`,
         };

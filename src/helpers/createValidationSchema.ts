@@ -3,18 +3,18 @@ import * as Yup from "yup";
 type StringFieldConfig = {
   type: "string";
   required?: boolean;
-  isEmail?: boolean; // Validar si es un correo electrónico
-  minLength?: number; // Mínimo de caracteres
-  maxLength?: number; // Máximo de caracteres
-  regex?: { pattern: RegExp; errorMessage: string }; // Validar con expresión regular
+  isEmail?: boolean;
+  minLength?: number;
+  maxLength?: number;
+  regex?: { pattern: RegExp; errorMessage: string };
 };
 
 type NumberFieldConfig = {
   type: "number";
   required?: boolean;
-  minValue?: number; // Valor mínimo permitido
-  maxValue?: number; // Valor máximo permitido
-  allowedValues?: number[]; // Lista de valores permitidos
+  minValue?: number;
+  maxValue?: number;
+  allowedValues?: number[];
 };
 
 type BooleanFieldConfig = {
@@ -25,8 +25,8 @@ type BooleanFieldConfig = {
 type DateFieldConfig = {
   type: "date";
   required?: boolean;
-  minDate?: Date; // Fecha mínima
-  maxDate?: Date; // Fecha máxima
+  minDate?: Date;
+  maxDate?: Date;
 };
 
 type FieldConfig =
@@ -48,28 +48,30 @@ export const createValidationSchema = (config: SchemaConfig): Yup.ObjectSchema<a
         if ("type" in fieldConfig) {
           let stringValidator: Yup.StringSchema = Yup.string();
           if (fieldConfig.isEmail) {
-            stringValidator = stringValidator.email("Debe ser un correo electrónico válido");
+            stringValidator = stringValidator.email(
+              "Por favor, introduce una dirección de correo electrónico válida."
+            );
           }
           if (fieldConfig.minLength) {
             stringValidator = stringValidator.min(
               fieldConfig.minLength,
-              `Debe tener al menos ${fieldConfig.minLength} caracteres`
+              `Este campo debe tener al menos ${fieldConfig.minLength} caracteres.`
             );
           }
           if (fieldConfig.maxLength) {
             stringValidator = stringValidator.max(
               fieldConfig.maxLength,
-              `Debe tener como máximo ${fieldConfig.maxLength} caracteres`
+              `Este campo no puede exceder los ${fieldConfig.maxLength} caracteres.`
             );
           }
           if (fieldConfig.regex) {
             stringValidator = stringValidator.matches(
               fieldConfig.regex.pattern,
-              fieldConfig.regex.errorMessage
+              fieldConfig.regex.errorMessage || "El valor no cumple con el formato requerido."
             );
           }
           if (fieldConfig.required) {
-            stringValidator = stringValidator.required("Este campo es obligatorio");
+            stringValidator = stringValidator.required("Este campo es requerido.");
           }
           validator = stringValidator;
         }
@@ -77,27 +79,29 @@ export const createValidationSchema = (config: SchemaConfig): Yup.ObjectSchema<a
 
       case "number":
         if ("type" in fieldConfig) {
-          let numberValidator: Yup.NumberSchema = Yup.number();
+          let numberValidator: Yup.NumberSchema = Yup.number().typeError(
+            "Por favor, introduce un valor numérico válido."
+          );
           if (fieldConfig.minValue) {
             numberValidator = numberValidator.min(
               fieldConfig.minValue,
-              `Debe ser mayor o igual a ${fieldConfig.minValue}`
+              `El valor mínimo permitido es ${fieldConfig.minValue}.`
             );
           }
           if (fieldConfig.maxValue) {
             numberValidator = numberValidator.max(
               fieldConfig.maxValue,
-              `Debe ser menor o igual a ${fieldConfig.maxValue}`
+              `El valor máximo permitido es ${fieldConfig.maxValue}.`
             );
           }
           if (fieldConfig.allowedValues) {
             numberValidator = numberValidator.oneOf(
               fieldConfig.allowedValues,
-              `El valor debe ser uno de: ${fieldConfig.allowedValues.join(", ")}`
+              `El valor debe ser uno de los siguientes: ${fieldConfig.allowedValues.join(", ")}.`
             );
           }
           if (fieldConfig.required) {
-            numberValidator = numberValidator.required("Este campo es obligatorio");
+            numberValidator = numberValidator.required("Este campo es requerido.");
           }
           validator = numberValidator;
         }
@@ -105,9 +109,11 @@ export const createValidationSchema = (config: SchemaConfig): Yup.ObjectSchema<a
 
       case "boolean":
         if ("type" in fieldConfig) {
-          let booleanValidator: Yup.BooleanSchema = Yup.boolean();
+          let booleanValidator: Yup.BooleanSchema = Yup.boolean().typeError(
+            "Por favor, selecciona una opción válida."
+          );
           if (fieldConfig.required) {
-            booleanValidator = booleanValidator.required("Este campo es obligatorio");
+            booleanValidator = booleanValidator.required("Este campo es requerido.");
           }
           validator = booleanValidator;
         }
@@ -115,21 +121,23 @@ export const createValidationSchema = (config: SchemaConfig): Yup.ObjectSchema<a
 
       case "date":
         if ("type" in fieldConfig) {
-          let dateValidator: Yup.DateSchema = Yup.date();
+          let dateValidator: Yup.DateSchema = Yup.date().typeError(
+            "Por favor, introduce una fecha válida."
+          );
           if (fieldConfig.minDate) {
             dateValidator = dateValidator.min(
               fieldConfig.minDate,
-              `La fecha debe ser posterior a ${fieldConfig.minDate.toLocaleDateString()}`
+              `La fecha debe ser posterior a ${fieldConfig.minDate.toLocaleDateString()}.`
             );
           }
           if (fieldConfig.maxDate) {
             dateValidator = dateValidator.max(
               fieldConfig.maxDate,
-              `La fecha debe ser anterior a ${fieldConfig.maxDate.toLocaleDateString()}`
+              `La fecha debe ser anterior a ${fieldConfig.maxDate.toLocaleDateString()}.`
             );
           }
           if (fieldConfig.required) {
-            dateValidator = dateValidator.required("Este campo es obligatorio");
+            dateValidator = dateValidator.required("Este campo es requerido.");
           }
           validator = dateValidator;
         }

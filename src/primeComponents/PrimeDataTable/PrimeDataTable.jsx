@@ -77,7 +77,7 @@ export const PrimeDataTable = ({
       onClick={() => customButtonProps?.onClick(rowData)}
     />
   );
-  console.log(selectedProducts);
+  
 
   return (
     <PrimeReactDataTable

@@ -6,91 +6,103 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setLogin, setRole, setToken, setUsuario } from "@/store/slices/auth";
 import { SelectField } from "@/components/SelectField/SelectField";
-import { appRoutesComex, appRoutesGestionFinanciera, appRoutesTesoreria } from "@/data/Rutas";
+import {
+  appRoutesComex,
+  appRoutesGestionFinanciera,
+  appRoutesTesoreria,
+} from "@/data/Rutas";
 
 import logo from "@/assets/LogoDefault.png";
+import axios from "axios";
+import { url } from "@/connections/mainApi";
 
 export const Login: React.FC = () => {
-	const [user, setUser] = useState({ correo: "", contraseña: "" });
-	const [role, setRoleSelection] = useState("admin");
-	const [selectedModule, setSelectedModule] = useState("");
-	const Authclg = useAppSelector((state) => state.auth);
-	const navigate = useNavigate();
-	const dispatch = useAppDispatch();
+  const [user, setUser] = useState({ correo: "", contraseña: "" });
+  const [role, setRoleSelection] = useState("admin");
+  const [selectedModule, setSelectedModule] = useState("");
+  const Authclg = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-	const handleLogin = () => {
-		const mockUser = {
-			nombre: "Admin",
-			correo: "admin@example.com",
-			uid: "admin-uid",
-		};
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(`${url}/auth/login`, {
+        email: user.correo,
+        password: user.contraseña,
+      });
 
-		const token = "token_renzo_costa";
+      const { user: usuario, token } = response.data;
 
-		let appRoutes = [];
-		if (selectedModule === "comex") {
-			appRoutes = appRoutesComex;
-		} else if (selectedModule === "financiero") {
-			appRoutes = appRoutesGestionFinanciera;
-		} else if (selectedModule === "tesoreria") {
-			appRoutes = appRoutesTesoreria;
-		}
+      dispatch(setLogin(true));
+      dispatch(setRole(usuario.role.name));
+      dispatch(setToken(token));
+      dispatch(
+        setUsuario({
+          nombre: usuario.name,
+          correo: usuario.email,
+          uid: usuario.id,
+        })
+      );
 
-		dispatch(setLogin(true));
-		dispatch(setRole(role));
-		dispatch(setToken(token));
-		dispatch(setUsuario(mockUser));
+      localStorage.setItem("rt__renzo__costa", token);
+      localStorage.setItem("usuario", JSON.stringify(usuario));
 
-		localStorage.setItem("token", token);
-		localStorage.setItem("usuario", JSON.stringify(mockUser));
+      navigate("/");
+    } catch (err: any) {
+      const errorMessage =
+        err.response?.data?.message || "Error al iniciar sesión";
+    } finally {
+    }
+  };
 
-		navigate("/");
-	};
-	console.log(Authclg);
-	return (
-		<div className={style.loginContainer}>
-			<div className={style.overlayContainer}>
-				<div className={style.overlay}></div>
-			</div>
+  return (
+    <div className={style.loginContainer}>
+      <div className={style.overlayContainer}>
+        <div className={style.overlay}></div>
+      </div>
 
-			<div className={`${style.form__container__layout}`}>
-				<div className={`${style.form__container}`}>
-					<div style={{ width: "auto", margin: "0 auto" }}>
-						<img
-							src={logo}
-							alt="Logo"
-							style={{ width: "100%", height: "80px", objectFit: "cover" }}
-						/>
-					</div>
+      <div className={`${style.form__container__layout}`}>
+        <div className={`${style.form__container}`}>
+          <div style={{ width: "auto", margin: "0 auto" }}>
+            <img
+              src={logo}
+              alt="Logo"
+              style={{ width: "100%", height: "80px", objectFit: "cover" }}
+            />
+          </div>
 
-					<div className={style.headerContainer}>
-						<h2>Bienvenido</h2>
-						<p>Ingresa tus datos para acceder al sistema.</p>
-					</div>
+          <div className={style.headerContainer}>
+            <h2>Bienvenido</h2>
+            <p>Ingresa tus datos para acceder al sistema.</p>
+          </div>
 
-					<TextBoxField
-						textLabel="Correo:"
-						value={user.correo}
-						name="correo"
-						onChange={(e) => setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }))}
-					/>
+          <TextBoxField
+            textLabel="Correo:"
+            value={user.correo}
+            name="correo"
+            onChange={(e) =>
+              setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+            }
+          />
 
-					<TextBoxField
-						textLabel="Contraseña:"
-						value={user.contraseña}
-						name="contraseña"
-						onChange={(e) => setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }))}
-						type="password"
-					/>
+          <TextBoxField
+            textLabel="Contraseña:"
+            value={user.contraseña}
+            name="contraseña"
+            onChange={(e) =>
+              setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+            }
+            type="password"
+          />
 
-					<CustomButton
-						text="INGRESAR"
-						backgroundButton="var(--primary-color-app)"
-						colorP="#fff"
-						onClick={handleLogin}
-					/>
-				</div>
-			</div>
-		</div>
-	);
+          <CustomButton
+            text="INGRESAR"
+            backgroundButton="var(--primary-color-app)"
+            colorP="#fff"
+            onClick={handleLogin}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };

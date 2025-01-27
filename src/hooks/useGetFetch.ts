@@ -1,59 +1,63 @@
 import { useEffect, useState } from "react";
-import api from "@/connections";
-import { toast } from 'sonner';
+import axios from "axios";
+import { url } from "@/connections/mainApi"; // URL base desde connections
 
-type HookData<T> = {
-  data: T[] | any;
-  isLoading: boolean;
-  reloadFetchData: () => Promise<void>;
-};
+interface UseGetFetchOptions {
+	headers?: Record<string, any>;
+	params?: Record<string, any>;
+}
 
-export const useGetFetch = <T>(endPoint: string | null): HookData<T> => {
-  const [data, setData] = useState<T[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+interface UseGetFetchResult {
+	data: any;
+	isLoading: boolean;
+	error: any;
+	reloadFetchData: () => Promise<void>;
+}
 
-  const getFetchData = async () => {
-    if (!endPoint || endPoint.includes('null') || endPoint.includes('undefined')) {
-      // Si el endpoint es inválido, no hacemos la petición
-      setIsLoading(false);
-      return;
-    }
+export const useGetFetch = (
+	endpoint: string,
+	options?: UseGetFetchOptions
+): UseGetFetchResult => {
+	const [data, setData] = useState<any>(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState<any>(null);
 
-    try {
-      const token = localStorage.getItem("rt__eva__backoffice");
-      const headers = {
-        access_token: token,
-      };
+	const fetchData = async () => {
+		setIsLoading(true);
+		setError(null);
 
-      const resp = await api.get(`${endPoint}`, { headers });
-      const responseData = resp.data;
+		try {
+		
+			const fullUrl = `${url}${endpoint}`;
 
-      setData(responseData);
-      setIsLoading(false);
-    } catch (error: any) {
-      if (error.response && error.response.status === 404) {
-        const errorMsg = error.response.data?.msg || 'Recurso no encontrado.';
-        if (endPoint !== '/servicio/getServiciosPorMesContadora/null' && endPoint !== '/servicio/getServiciosPorMesContadora/undefined') {
-          toast.error(errorMsg); // Mostrar mensaje con Sonner solo si el endpoint es válido
-        }
-      } else {
-        console.error(error);
-      }
-      setIsLoading(false);
-    }
-  };
+			const response = await axios.get(fullUrl, {
+				headers: options?.headers,
+				params: options?.params,
+			});
 
-  const reloadFetchData = async () => {
-    await getFetchData();
-  };
+			setData(response.data); 
+		} catch (err) {
+			setError(err); 
+			console.error("Error fetching data:", err);
+		} finally {
+			setIsLoading(false); 
+		}
+	};
 
-  useEffect(() => {
-    getFetchData();
-  }, []);
+	
+	const reloadFetchData = async () => {
+		await fetchData();
+	};
 
-  return {
-    data,
-    isLoading,
-    reloadFetchData,
-  };
+
+	useEffect(() => {
+		fetchData();
+	}, [endpoint]); 
+
+	return {
+		data,
+		isLoading,
+		error,
+		reloadFetchData,
+	};
 };

@@ -75,7 +75,7 @@ export const usePostFetch = (
         setIsLoadingPost(true);
 
         const headers = isLogin ? {} : {
-            Authorization: `Bearer ${localStorage.getItem("rt__eva__backoffice")}`,
+            Authorization: `Bearer ${localStorage.getItem("rt__renzo__costa")}`,
         };
 
         const promise = api.post(

@@ -14,16 +14,21 @@ import {
 
 interface PropsAddModal {
   postFetchData?: any;
+  updateFetchData?: any;
+  initialData?: any;
+  onHideModal?: any;
 }
 
 const getSchemaConfig = (isEdit: boolean): SchemaConfig => ({
-  role: { type: "string", required: true },
-
+  name: { type: "string", required: true },
 });
 
-
-
-export const AddModal = ({ postFetchData, initialData }) => {
+export const AddModal = ({
+  postFetchData,
+  initialData,
+  updateFetchData,
+  onHideModal,
+}: PropsAddModal) => {
   const validationSchema = createValidationSchema(
     getSchemaConfig(!!initialData)
   );
@@ -37,43 +42,53 @@ export const AddModal = ({ postFetchData, initialData }) => {
     resetForm,
   } = useForm({
     initialValues: {
-      role:""
+      name: "",
     },
     validationSchema,
   });
 
-  // Actualiza los valores del formulario cuando cambie `initialData`
   useEffect(() => {
     if (initialData) {
-      setAllValues(initialData); // Mapear los valores
+      setAllValues(initialData);
     } else {
-      resetForm(); // Limpiar el formulario si no hay datos iniciales
+      resetForm();
     }
-  }, [initialData]); // Solo depende de `initialData`
+  }, [initialData]);
 
   const handleSubmit = async () => {
     const isValid = await validateForm();
     if (isValid) {
-      console.log("Datos enviados:", values);
+      const dataToSend = {
+        name: values.name,
+      };
+
+      if (initialData) {
+        // await updateFetchData(initialData.id, dataToSend);
+        console.log(dataToSend)
+        onHideModal();
+      } else {
+        console.log(dataToSend)
+        // await postFetchData(dataToSend);
+        onHideModal();
+      }
+      // console.log("Datos enviados:", dataToSend);
     } else {
       console.error("Errores de validación:", errors);
     }
   };
 
- 
   return (
     <div className={style.column__container}>
       <TextBoxField
         textLabel="Nombre:"
-        name="role"
-        value={values.role}
+        name="name"
+        value={values.name}
         onChange={handleChange}
         direction="row"
         labelWidth="120px"
-        errorMessage={errors.role}
+        errorMessage={errors.name}
       />
 
-     
       <div>
         <Button
           className="p-button-sm p-button-info mr-2"

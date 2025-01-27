@@ -32,6 +32,7 @@ const getSchemaConfig = (isEdit: boolean): SchemaConfig => ({
     },
     required: true,
   },
+  birth_date:{type:"string", required:true}
 });
 
 const roles = [
@@ -150,6 +151,7 @@ export const AddModal = ({ postFetchData, initialData }) => {
         direction="row"
         labelWidth="120px"
         errorMessage={errors.phone}
+        maxLength={9}
       />
 
       <DateField
