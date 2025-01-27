@@ -48,7 +48,7 @@ export const { setNotifications, addNotification, setLoading, markAsRead } = not
 export const fetchNotifications = (userId: string): AppThunk => async dispatch => {
   dispatch(setLoading(true));
   try {
-    const token = localStorage.getItem("rt__eva__backoffice");
+    const token = localStorage.getItem("rt__renzo__costa");
     const headers = { access_token: token };
     const response = await axios.get(`${url}notificacion/getNotificaciones/${userId}`, { headers });
     dispatch(setNotifications(response.data.notificaciones));

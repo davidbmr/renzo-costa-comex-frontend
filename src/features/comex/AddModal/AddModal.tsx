@@ -7,204 +7,244 @@ import { Button } from "primereact/button";
 import { TextBoxField } from "@/components/TextBoxField/TextBoxField";
 import { SelectField } from "@/components/SelectField/SelectField";
 import { DateField } from "@/components/DateField/DateField";
+import {
+  createValidationSchema,
+  SchemaConfig,
+} from "@/helpers/createValidationSchema";
+import { useForm } from "@/hooks/useForm";
 
 interface PropsAddModal {
-	postFetchData?: any;
-	updateFetchData?: any;
-	updateData?: any;
+  postFetchData?: any;
+  updateFetchData?: any;
+  updateData?: any;
 }
 
-export const AddModal = ({ postFetchData, updateFetchData, updateData }: PropsAddModal) => {
-	const [newData, setNewData] = useState<any>({
-		proveedor: "",
-		orden: "",
-		ingreso: "",
-		estado: "",
-		descripcion: "",
-		observacion: "",
-		uso:"",
-		total:"",
-		cajas:"",
-		kilos:""
-	});
+const getSchemaConfig = (isEdit: boolean): SchemaConfig => ({
+  proveedor: { type: "string", required: true },
+  orden: { type: "string", required: true },
+  ingreso: { type: "string", required: true },
+  estado: { type: "string", required: true },
+  descripcion: { type: "string", required: true },
+  observacion: { type: "string", required: true },
+  uso: { type: "string", required: true },
+  total: { type: "number", required: true, minValue: 1 },
+  cajas: { type: "number", required: true, minValue: 1 },
+  kilos: { type: "number", required: true, minValue: 1 },
+});
 
-	const handleCreate = async () => {
-		const formData = new FormData();
-		Object.entries(newData).forEach(([key, value]) => {
-			if (value !== null && value !== undefined) {
-				if (value instanceof File) {
-					formData.append(key, value);
-				} else {
-					formData.append(key, String(value));
-				}
-			}
-		});
+export const AddModal = ({
+  postFetchData,
+  updateFetchData,
+  updateData,
+}: PropsAddModal) => {
+  const validationSchema = createValidationSchema(
+    getSchemaConfig(!!updateData)
+  );
 
-		postFetchData(formData);
-	};
+  const {
+    values,
+    errors,
+    handleChange,
+    validateForm,
+    setAllValues,
+    resetForm,
+  } = useForm({
+    initialValues: {
+      proveedor: "",
+      orden: "",
+      ingreso: "",
+      estado: "",
+      descripcion: "",
+      observacion: "",
+      uso: "",
+      total: 0,
+      cajas: 0,
+      kilos: 0,
+    },
+    validationSchema,
+  });
 
-	const handleUpdate = async () => {
-		const { id, ...restData } = newData;
-		const formData = new FormData();
-		Object.entries(restData).forEach(([key, value]) => {
-			if (value !== null && value !== undefined) {
-				if (value instanceof File) {
-					formData.append(key, value);
-				} else {
-					formData.append(key, String(value));
-				}
-			}
-		});
-		updateFetchData(id, formData);
-	};
+  // Actualiza los valores del formulario
+  useEffect(() => {
+    if (updateData) {
+      setAllValues(updateData);
+    } else {
+      resetForm();
+    }
+  }, [updateData]);
 
-	const handleBannerChange = (e: any) => {
-		setNewData({ ...newData, banner: e.files[0] });
-	};
+  const handleSubmit = async () => {
+    const isValid = await validateForm();
 
-	// Seteando el estado del input al data si existe el update
-	useEffect(() => {
-		if (updateData) {
-			setNewData(updateData);
-		}
-	}, [updateData]);
+    if (!isValid) return;
 
-	return (
-		<div className={style.column__container}>
-			<SelectField
-				textLabel="Proveedor:"
-				name="proveedor"
-				value={newData.proveedor}
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				options={optionSelect}
-				direction="row"
-				labelWidth="80px"
-			/>
+    if (updateData) {
+      // Modo edición
+      // await updateFetchData(1, values);
+    } else {
+      // await postFetchData(values);
+    }
 
-			<TextBoxField
-				textLabel="Orden:"
-				value={newData.orden || ""}
-				name="orden"
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				direction="row"
-				labelWidth="80px"
-			/>
+    console.log("Operación completada:", values);
 
-			<DateField
-				textLabel="Ingreso:"
-				direction="row"
-				labelWidth="80px"
-				name="ingreso"
-				value={newData.ingreso}
-				onChange={(e) => handleChangeInput(e, setNewData)}
-			/>
+    resetForm();
+  };
 
-			<SelectField
-				textLabel="Estado:"
-				name={"estado"}
-				value={newData.estado}
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				options={optionEstado}
-				direction="row"
-				labelWidth="80px"
-			/>
+  return (
+    <div className={style.column__container}>
+      <SelectField
+        textLabel="Proveedor:"
+        name="proveedor"
+        value={values.proveedor}
+        onChange={handleChange}
+        options={optionSelect}
+        direction="row"
+        labelWidth="80px"
+        errorMessage={errors.proveedor}
+      />
 
-			<TextBoxField
-				textLabel="Descripción:"
-				value={newData.descripcion || ""}
-				name="descripcion"
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				direction="row"
-				labelWidth="80px"
-			/>
+      <TextBoxField
+        textLabel="Orden:"
+        value={values.orden || ""}
+        name="orden"
+        onChange={handleChange}
+        direction="row"
+        labelWidth="80px"
+        errorMessage={errors.orden}
+      />
 
-			<SelectField
-				textLabel="Observación:"
-				name={"observacion"}
-				value={newData.observacion}
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				options={optionObservacion}
-				direction="row"
-				labelWidth="80px"
-			/>
+      <DateField
+        textLabel="Ingreso:"
+        direction="row"
+        labelWidth="80px"
+        name="ingreso"
+        value={values.ingreso}
+        onChange={handleChange}
+        errorMessage={errors.ingreso}
+      />
 
-			<SelectField
-				textLabel="Uso:"
-				name={"uso"}
-				value={newData.uso}
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				options={optionUso}
-				direction="row"
-				labelWidth="80px"
-			/>
+      <SelectField
+        textLabel="Estado:"
+        name={"estado"}
+        value={values.estado}
+        onChange={handleChange}
+        options={optionEstado}
+        direction="row"
+        labelWidth="80px"
+        errorMessage={errors.estado}
+      />
 
-			<div className={style.two__container}>
-				<TextBoxField
-					textLabel="Total:"
-					value={newData.total || ""}
-					name="total"
-					onChange={(e) => handleChangeInput(e, setNewData)}
-					direction="row"
-					labelWidth="80px"
-				/>
-				<TextBoxField
-					textLabel="Cajas:"
-					value={newData.cajas || ""}
-					name="cajas"
-					onChange={(e) => handleChangeInput(e, setNewData)}
-					direction="row"
-					labelWidth="80px"
-				/>
-			</div>
-			<TextBoxField
-				textLabel="Kilos:"
-				value={newData.kilos || ""}
-				name="kilos"
-				onChange={(e) => handleChangeInput(e, setNewData)}
-				direction="row"
-				labelWidth="80px"
-			/>
+      <TextBoxField
+        textLabel="Descripción:"
+        value={values.descripcion || ""}
+        name="descripcion"
+        onChange={handleChange}
+        direction="row"
+        labelWidth="80px"
+        errorMessage={errors.descripcion}
+      />
 
-			{postFetchData && (
-				<div>
-					<Button className="p-button-sm p-button-info mr-2" onClick={handleCreate}>
-						GUARDAR
-					</Button>
-				</div>
-			)}
+      <SelectField
+        textLabel="Observación:"
+        name={"observacion"}
+        value={values.observacion}
+        onChange={handleChange}
+        options={optionObservacion}
+        direction="row"
+        labelWidth="80px"
+        errorMessage={errors.observacion}
+      />
 
-			{updateFetchData && (
-				<div>
-					<Button className="p-button-sm p-button-info mr-2" onClick={handleUpdate}>
-						GUARDAR
-					</Button>
-				</div>
-			)}
-		</div>
-	);
+      <SelectField
+        textLabel="Uso:"
+        name={"uso"}
+        value={values.uso}
+        onChange={handleChange}
+        options={optionUso}
+        direction="row"
+        labelWidth="80px"
+        errorMessage={errors.uso}
+      />
+
+      <div className={style.two__container}>
+        <TextBoxField
+          textLabel="Total:"
+          value={values.total || ""}
+          name="total"
+          onChange={handleChange}
+          direction="row"
+          labelWidth="80px"
+          errorMessage={errors.total}
+          type="number"
+        />
+        <TextBoxField
+          textLabel="Cajas:"
+          value={values.cajas || ""}
+          name="cajas"
+          onChange={handleChange}
+          direction="row"
+          labelWidth="80px"
+          errorMessage={errors.cajas}
+          type="number"
+        />
+      </div>
+      <TextBoxField
+        textLabel="Kilos:"
+        value={values.kilos || ""}
+        name="kilos"
+        onChange={handleChange}
+        direction="row"
+        labelWidth="80px"
+        errorMessage={errors.kilos}
+        type="number"
+      />
+
+      {postFetchData && (
+        <div>
+          <Button
+            className="p-button-sm p-button-info mr-2"
+            onClick={handleSubmit}
+          >
+            GUARDAR
+          </Button>
+        </div>
+      )}
+
+      {updateFetchData && (
+        <div>
+          <Button
+            className="p-button-sm p-button-info mr-2"
+            onClick={handleSubmit}
+          >
+            GUARDAR
+          </Button>
+        </div>
+      )}
+    </div>
+  );
 };
 
 const optionSelect = [
-	{ name: "Proveedor 1", value: "proveedor1" },
-	{ name: "Proveedor 2", value: "proveedor2" },
-	{ name: "Proveedor 3", value: "proveedor3" },
-	{ name: "Proveedor 4", value: "proveedor4" },
-	{ name: "Proveedor 5", value: "proveedor5" },
+  { name: "Proveedor 1", value: "proveedor1" },
+  { name: "Proveedor 2", value: "proveedor2" },
+  { name: "Proveedor 3", value: "proveedor3" },
+  { name: "Proveedor 4", value: "proveedor4" },
+  { name: "Proveedor 5", value: "proveedor5" },
 ];
 
 const optionEstado = [
-	{ name: "Producción", value: "produccion" },
-	{ name: "Tránsito", value: "transito" },
+  { name: "Producción", value: "produccion" },
+  { name: "Tránsito", value: "transito" },
 ];
 
 const optionObservacion = [
-	{ name: "Reposición", value: "reposicion" },
-	{ name: "Nuevo", value: "nuevo" },
-	{ name: "Nuevo/Reposición", value: "nuevo-reposicion" },
+  { name: "Reposición", value: "reposicion" },
+  { name: "Nuevo", value: "nuevo" },
+  { name: "Nuevo/Reposición", value: "nuevo-reposicion" },
 ];
 
 const optionUso = [
-	{ name: "Dama", value: "dama" },
-	{ name: "Caballero", value: "caballero" },
-	{ name: "Dama/Caballero", value: "dama-caballero" },
+  { name: "Dama", value: "dama" },
+  { name: "Caballero", value: "caballero" },
+  { name: "Dama/Caballero", value: "dama-caballero" },
 ];

@@ -6,11 +6,12 @@ import styles from "./Rol.module.css";
 import { DataTable } from "@/components/DataTable/DataTable";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModal } from "./AddModal/AddModal";
+import { useGetFetch } from "@/hooks/useGetFetch";
 
 export const Rol = () => {
   const addModal = useModal();
 const [selectedUser, setSelectedUser] = useState(null)
-
+const FetchRolData = useGetFetch("/role")
 const handleEditSelection = (rowData) => {
     setSelectedUser(rowData);
     addModal.onVisibleModal(); 
@@ -39,7 +40,7 @@ const handleEditSelection = (rowData) => {
       </div>
       <DataTable
         columns={columns || []}
-        data={data || []}
+        data={FetchRolData.data || []}
         isHeaderActive={false}
         onUpdate={handleEditSelection}
    

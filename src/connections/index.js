@@ -7,7 +7,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("rt__eva__backoffice");
+    const token = localStorage.getItem("rt__renzo__costa");
     if (token) {
       config.headers['access_token'] = token; // Usar 'access_token' en lugar de 'Authorization'
     }
@@ -29,18 +29,18 @@ api.interceptors.response.use(
     if (error.response && error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
-      const refreshToken = localStorage.getItem("rt__eva__backoffice");
+      const refreshToken = localStorage.getItem("rt__renzo__costa");
       if (refreshToken) {
         try {
           const { data } = await axios.post(`${url}auth/refreshToken`, { token: refreshToken });
-          localStorage.setItem("rt__eva__backoffice", data.token);
+          localStorage.setItem("rt__renzo__costa", data.token);
           originalRequest.headers['access_token'] = data.token;
 
      
           return api(originalRequest);
         } catch (refreshError) {
         
-          localStorage.removeItem("rt__eva__backoffice");
+          localStorage.removeItem("rt__renzo__costa");
           return Promise.reject(refreshError);
         }
       }

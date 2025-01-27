@@ -20,7 +20,7 @@ export const useGetFetch = <T>(endPoint: string | null): HookData<T> => {
     }
 
     try {
-      const token = localStorage.getItem("rt__eva__backoffice");
+      const token = localStorage.getItem("rt__renzo__costa");
       const headers = {
         access_token: token,
       };

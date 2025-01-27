@@ -23,7 +23,7 @@ export function AppRoutes() {
 		}
 	}, [module]);
 
-	const isAuthenticated = localStorage.getItem("token");
+	const isAuthenticated = localStorage.getItem("rt__renzo__costa");
 
 	return (
 		<BrowserRouter>
