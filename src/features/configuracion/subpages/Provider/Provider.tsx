@@ -2,12 +2,12 @@ import { CustomButton } from "@/components/CustomButton/CustomButton";
 import { MainContentStructure } from "@/components/MainContentStructure/MainContentStructure";
 import { useModal } from "@/hooks/useModal";
 import React, { useState } from "react";
-import styles from "./Users.module.css";
+import styles from "./Provider.module.css";
 import { DataTable } from "@/components/DataTable/DataTable";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModal } from "./AddModal/AddModal";
 
-export const Users = () => {
+export const Provider = () => {
   const addModal = useModal();
 const [selectedUser, setSelectedUser] = useState(null)
 
@@ -21,10 +21,10 @@ const handleEditSelection = (rowData) => {
     setSelectedUser(null);
     addModal.onVisibleModal();
   };
-
+  
   return (
     <MainContentStructure>
-      <h2 style={{ color: "#333", textTransform: "uppercase" }}>Usuarios</h2>
+      <h2 style={{ color: "#333", textTransform: "uppercase" }}>Proveedores</h2>
       <div className={styles.btnContainer}>
         <CustomButton
           text="Crear"
@@ -37,7 +37,7 @@ const handleEditSelection = (rowData) => {
       </div>
       <DataTable
         columns={columns || []}
-        data={data || []}
+        data={companies || []}
         isHeaderActive={false}
         onUpdate={handleEditSelection}
    
@@ -45,7 +45,7 @@ const handleEditSelection = (rowData) => {
 
       {/* Add Modal */}
       <PrimeModal
-        header={selectedUser ? "Editar Usuario" : "Agregar Usuario"}
+        header={selectedUser ? "Editar Proveedor" : "Agregar Proveedor"}
         modalStatus={addModal.modalStatus}
         onHideModal={addModal.onHideModal}
         width={600}
@@ -56,50 +56,48 @@ const handleEditSelection = (rowData) => {
   );
 };
 
-const data = [
+const companies = [
   {
-    id:1,
-    name: "Ana",
-    last_name: "Perez",
-    email: "anaperez123@gmail.com",
-    role_id: 2,
-    phone: "987123456",
-    birth_date: "1990-06-25",
+    code: "001",
+    company_name: "Tech Solutions Inc.",
+    phone: "+18005551234",
+    currency: "USD",
+    exchange_rate: 1.0
   },
   {
-    id:2,
-    name: "Luis",
-    last_name: "Gomez",
-    email: "luisgomez77@hotmail.com",
-    role_id: 3,
-    phone: "986543210",
-    birth_date: "1985-12-15",
+    code: "002",
+    company_name: "Global Innovations Ltd.",
+    phone: "442079460958",
+    currency: "GBP",
+    exchange_rate: 0.75
   },
   {
-    id:3,
-    name: "María",
-    last_name: "Lopez",
-    email: "maria.lopez89@yahoo.com",
-    role_id: 4,
-    phone: "983456789",
-    birth_date: "1993-05-10",
+    code: "003",
+    company_name: "EuroTech SAS",
+    phone: "33123466789",
+    currency: "EUR",
+    exchange_rate: 0.85
   },
   {
-    id:4,
-    name: "Carlos",
-    last_name: "Fernandez",
-    email: "carlos_fernandez@gmail.com",
-    role_id: 1,
-    phone: "982345678",
-    birth_date: "2000-08-21",
+    code: "004",
+    company_name: "Asia Pacific Corp.",
+    phone: "81312345678",
+    currency: "JPY",
+    exchange_rate: 110.0
   },
+  {
+    code: "005",
+    company_name: "Latin America Enterprises",
+    phone: "525512345678",
+    currency: "MXN",
+    exchange_rate: 20.0
+  }
 ];
 
 const columns = [
-  { nombre: "Nombre", campo: "name" },
-  { nombre: "Apellido", campo: "last_name" },
-  { nombre: "Correo", campo: "email" },
-  { nombre: "Rol", campo: "role_id" },
-  { nombre: "Celular", campo: "phone" },
-  { nombre: "Fecha de nacimiento", campo: "birth_date" },
+  { nombre: "Codigo", campo: "code" },
+  { nombre: "Nombre Empresa", campo: "company_name" },
+  { nombre: "Teléfono", campo: "phone" },
+  { nombre: "Moneda", campo: "currency" },
+  { nombre: "Tipo de Cambio", campo: "exchange_rate" },
 ];

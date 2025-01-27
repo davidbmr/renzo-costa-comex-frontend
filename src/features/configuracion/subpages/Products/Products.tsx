@@ -2,12 +2,12 @@ import { CustomButton } from "@/components/CustomButton/CustomButton";
 import { MainContentStructure } from "@/components/MainContentStructure/MainContentStructure";
 import { useModal } from "@/hooks/useModal";
 import React, { useState } from "react";
-import styles from "./Users.module.css";
+import styles from "./Products.module.css";
 import { DataTable } from "@/components/DataTable/DataTable";
 import { PrimeModal } from "@/primeComponents/PrimeModal/PrimeModal";
 import { AddModal } from "./AddModal/AddModal";
 
-export const Users = () => {
+export const Products = () => {
   const addModal = useModal();
 const [selectedUser, setSelectedUser] = useState(null)
 
@@ -24,7 +24,7 @@ const handleEditSelection = (rowData) => {
 
   return (
     <MainContentStructure>
-      <h2 style={{ color: "#333", textTransform: "uppercase" }}>Usuarios</h2>
+      <h2 style={{ color: "#333", textTransform: "uppercase" }}>Productos</h2>
       <div className={styles.btnContainer}>
         <CustomButton
           text="Crear"
@@ -45,7 +45,7 @@ const handleEditSelection = (rowData) => {
 
       {/* Add Modal */}
       <PrimeModal
-        header={selectedUser ? "Editar Usuario" : "Agregar Usuario"}
+        header={selectedUser ? "Editar Producto" : "Agregar Producto"}
         modalStatus={addModal.modalStatus}
         onHideModal={addModal.onHideModal}
         width={600}
@@ -58,48 +58,40 @@ const handleEditSelection = (rowData) => {
 
 const data = [
   {
-    id:1,
-    name: "Ana",
-    last_name: "Perez",
-    email: "anaperez123@gmail.com",
-    role_id: 2,
-    phone: "987123456",
-    birth_date: "1990-06-25",
+    "model_id": 1,
+    "gender": "FEMALE",
+    "description": "tomatodo",
+    "model": "Renzo Costa Cartera Elegance 2023"
   },
   {
-    id:2,
-    name: "Luis",
-    last_name: "Gomez",
-    email: "luisgomez77@hotmail.com",
-    role_id: 3,
-    phone: "986543210",
-    birth_date: "1985-12-15",
+    "model_id": 2,
+    "gender": "FEMALE",
+    "description": "clásica",
+    "model": "Renzo Costa Cartera Classic 2023"
   },
   {
-    id:3,
-    name: "María",
-    last_name: "Lopez",
-    email: "maria.lopez89@yahoo.com",
-    role_id: 4,
-    phone: "983456789",
-    birth_date: "1993-05-10",
+    "model_id": 3,
+    "gender": "MALE",
+    "description": "moderna",
+    "model": "Renzo Costa Cartera Urban 2023"
   },
   {
-    id:4,
-    name: "Carlos",
-    last_name: "Fernandez",
-    email: "carlos_fernandez@gmail.com",
-    role_id: 1,
-    phone: "982345678",
-    birth_date: "2000-08-21",
+    "model_id": 2,
+    "gender": "FEMALE",
+    "description": "elegante",
+    "model": "Renzo Costa Cartera Luxe 2023"
   },
-];
+  {
+    "model_id": 3,
+    "gender": "UNISEX",
+    "description": "minimalista",
+    "model": "Renzo Costa Cartera Minimal 2023"
+  }
+]
 
 const columns = [
-  { nombre: "Nombre", campo: "name" },
-  { nombre: "Apellido", campo: "last_name" },
-  { nombre: "Correo", campo: "email" },
-  { nombre: "Rol", campo: "role_id" },
-  { nombre: "Celular", campo: "phone" },
-  { nombre: "Fecha de nacimiento", campo: "birth_date" },
+  { nombre: "Genero", campo: "gender" },
+  { nombre: "Modelo", campo: "model" },
+  { nombre: "Descripción", campo: "description" },
+
 ];
