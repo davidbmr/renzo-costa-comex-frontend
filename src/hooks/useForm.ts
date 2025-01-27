@@ -11,38 +11,15 @@ export const useForm = <T extends Record<string, any>>({
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
 
-  const validateField = async (name: keyof T, value: any) => {
-    if (!validationSchema) return; // No validation schema
-    try {
-      // Validate only the specific field
-      await validationSchema.validateAt(name as string, { ...values, [name]: value });
-      setErrors((prevErrors:any) => {
-        const { [name]: _, ...restErrors } = prevErrors; // Remove the error for this field
-        return restErrors;
-      });
-    } catch (error: any) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: error.message, // Set the new error message for this field
-      }));
-    }
-  };
+  const handleChange = useCallback((e: any, nameOverride?: keyof T) => {
+    const name = nameOverride || e.target?.name || e.name;
+    const value = e.target?.value ?? e.value ?? e.checked;
 
-  const handleChange = useCallback(
-    async (e: any, nameOverride?: keyof T) => {
-      const name = nameOverride || e.target?.name || e.name;
-      const value = e.target?.value ?? e.value ?? e.checked;
-
-      setValues((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-
-      // Validate the field on change
-      await validateField(name, value);
-    },
-    [values, validationSchema] // Dependencies
-  );
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }, []);
 
   const validateForm = async () => {
     if (!validationSchema) return true;

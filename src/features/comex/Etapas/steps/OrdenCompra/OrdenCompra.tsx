@@ -85,7 +85,8 @@ export const OrdenCompra = () => {
             sheetName="OrdenCompra"
           />
 
-          <FaRegTrashAlt color="red" />
+<FaRegTrashAlt  color="red"/>
+
         </div>
 
         <div className="flex justify-content-end">
@@ -94,6 +95,7 @@ export const OrdenCompra = () => {
             <InputText type="search" placeholder="Buscar..." />
           </span>
         </div>
+		
       </div>
 
       <DataTable
@@ -123,18 +125,9 @@ const columns = [
   { nombre: "Pedido DIC", campo: "pedidoDIC" },
   { nombre: "Precio (PEN)", campo: "precioPEN" },
   { nombre: "Estado", campo: "estado" },
-  {
-    nombre: "Foto",
-    body: (rowData: any) => (
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD4qmuiXoOrmp-skck7b7JjHA8Ry4TZyPHkw&s"
-        alt=""
-        width={50}
-        height={50}
-      />
-    ),
-  },
+  { nombre: "Foto",  body: (rowData: any) => <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD4qmuiXoOrmp-skck7b7JjHA8Ry4TZyPHkw&s" alt="" width={50} height={50}/>, },
   { nombre: "Con foto", campo: "conFoto" },
   { nombre: "Con precio", campo: "conPrecio" },
   { nombre: "Costo (USD)", campo: "CostoUSD" },
+ 
 ];
